@@ -63,7 +63,6 @@ html,
   top: 0;
   width: 11px;
 }
-
 .show-shadow .shadow-right {
   background-image: url(../images/content_shadow_side_right.png);
   background-size: 100% 100%;
@@ -109,7 +108,6 @@ html,
   overflow-x: auto;
   width: 100%;
 }
-
 .main > header {
   background-color: transparent;
   border-color: transparent;
@@ -130,6 +128,10 @@ html,
   white-space: nowrap;
   width: auto;
 }
+.panels .panel:first-child > header,
+.panels .panel:first-child > article {
+  border-width: 0;
+}
 
 .panel {
   display: inline-block;
@@ -137,15 +139,12 @@ html,
   width: 300px;
   z-index: 1;
 }
-
 .panel.wide {
   width: 800px;
 }
-
 .panel.medium {
   width: 500px;
 }
-
 .panel > header {
   background-color: #18181C;
   border-color: #000000;
@@ -155,24 +154,16 @@ html,
   position: relative;
   vertical-align: middle;
 }
-
-.panels .panel:first-child header {
-  border-width: 0;
-}
-
-/* :navigation */
 .panel > header nav {
   display: inline-block;
   position: relative;
 }
-
 .panel > header nav ul {
   display: inline-block;
   margin: 0;
   padding: 0;
   position: relative;
 }
-
 .panel > header nav ul li {
   border-color: #333333;
   border-width: 0 1px 0 1px;
@@ -185,20 +176,12 @@ html,
   list-style-type: none;
   width: 50px;
 }
-
 .panel > header nav ul li:hover {
   background-color: #242424;
 }
-
-.panel > header nav li.wide,
-.panel > header nav.wide li {
-  width: 65px;
-}
-
 .panel > header nav ul li:nth-child(2n) {
   border-left-color: transparent !important;
 }
-
 .panel > header nav ul li a {
   box-sizing: border-box;
   color: #FFFFFF;
@@ -210,17 +193,13 @@ html,
   vertical-align: top;
   width: 100%;
 }
-
 .panel > header nav ul li a i {
   font-size: 30px;
   line-height: 45px;
 }
-
 .panel > header nav ul li a i.big-icon {
   font-size: 45px;
 }
-
-/* :heading */
 .panel > header h1 {
   color: #FFFFFF;
   display: inline-block;
@@ -232,8 +211,6 @@ html,
   padding: 0;
   width: 45%;
 }
-
-/* :content */
 .panel > article {
   background-color: #FFFDFF;
   border-color: #CCCCCC;
@@ -242,17 +219,17 @@ html,
   margin: 0;
   padding: 0;
 }
-
-.panels .panel:first-child article {
-  border-width: 0;
-}
-
 .panel > article h1 {
   font-size: 30px;
   font-weight: 100;
   line-height: 55px;
   margin: 0 0 40px 0;
   padding: 0;
+}
+
+.panel > header nav li.wide,
+.panel > header nav.wide li {
+  width: 65px;
 }
 
 /*# sourceMappingURL=jquery.stacky.css.map */

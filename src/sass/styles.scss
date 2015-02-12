@@ -24,9 +24,9 @@ $panel-header-height: 45px;
  * 3. GENERAL CONFIGURATION 
  */
 body {
-	font-family: "Roboto", sans-serif;
-  	font-weight: normal;
-  	-webkit-user-select: none; /* prevent users to select anything */
+    font-family: "Roboto", sans-serif;
+    font-weight: normal;
+    -webkit-user-select: none; /* prevent users to select anything */
 }
 
 /* 
@@ -38,11 +38,11 @@ html,
 .panels,
 .panel,
 .content {
-	height: 100%;
+    height: 100%;
 }
 
 .panel > article {
-	height: calc(100% - #{$panel-header-height});
+    height: calc(100% - #{$panel-header-height});
 }
 
 .main,
@@ -51,78 +51,80 @@ html,
 .panel,
 .panel > header,
 .panel > article {
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 /* 
  * 5. UTIL CLASSES 
  */
-.show-shadow .shadow-left {
-	background-image: url(../images/content_shadow_side_left.png);
-	background-size: 100% 100%;
-	bottom: 0;
-	left: -11px;
-	opacity: 0.1;
-	position: absolute;
-	top: 0;
-	width: 11px;
-}
+.show-shadow {
+    .shadow-left {
+        background-image: url(../images/content_shadow_side_left.png);
+        background-size: 100% 100%;
+        bottom: 0;
+        left: -11px;
+        opacity: 0.1;
+        position: absolute;
+        top: 0;
+        width: 11px;
+    }
 
-.show-shadow .shadow-right {
-	background-image: url(../images/content_shadow_side_right.png);
-	background-size: 100% 100%;
-	bottom: 0;
-	opacity: 0.1;
-	position: absolute;
-	right: -11px;
-	top: 0;
-	width: 11px;
+    .shadow-right {
+        background-image: url(../images/content_shadow_side_right.png);
+        background-size: 100% 100%;
+        bottom: 0;
+        opacity: 0.1;
+        position: absolute;
+        right: -11px;
+        top: 0;
+        width: 11px;
+    }
 }
 
 .hidden {
-	display: none !important;
-	transition: display 1s ease;
+    display: none !important;
+    transition: display 1s ease;
 }
 
 .left {
-	float: left;
+    float: left;
 }
 
 .right {
-	float: right;
+    float: right;
 }
 
 .content {
-	overflow-y: auto;
-	padding: 50px 100px 20px 60px;
-	line-height: 1.45;
+    overflow-y: auto;
+    padding: 50px 100px 20px 60px;
+    line-height: 1.45;
 }
 
 .ellipsis {
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* 
  * 6. PANEL CONTAINER STYLES 
  */
 .main {
-	background-color: $main-background;
-	margin: 0;
-	overflow-x: auto;
-	width: 100%;
-}
+    background-color: $main-background;
+    margin: 0;
+    overflow-x: auto;
+    width: 100%;
 
-.main > header {
-	background-color: $main-header-background;
-	border-color: $main-header-border;
-	border-style: solid;
-	border-width: 0 0 1px 0;
-	height: $panel-header-height;
-	position: fixed;
-	top: 0;
-	width: 100%;
+    > header {
+        background-color: $main-header-background;
+        border-color: $main-header-border;
+        border-style: solid;
+        border-width: 0 0 1px 0;
+        height: $panel-header-height;
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
 }
 
 /* 
@@ -130,132 +132,128 @@ html,
  */
 
 .panels {
-	font-size: 0;
-	overflow-x: auto;
-	white-space: nowrap;
+    font-size: 0;
+    overflow-x: auto;
+    white-space: nowrap;
     width: auto;
+
+    .panel:first-child {
+        > header,
+        > article {
+            border-width: 0;
+        }
+    }
 }
 
 .panel {
-	display: inline-block;
-	position: relative;
-	width: 300px;
-	z-index: 1;
-}
+    display: inline-block;
+    position: relative;
+    width: 300px;
+    z-index: 1;
 
-.panel.wide {
-	width: 800px;
-}
+    &.wide {
+        width: 800px;
+    }
 
-.panel.medium {
-	width: 500px;
-}
+    &.medium {
+        width: 500px;
+    }
 
-.panel > header {
-	background-color: $panel-header-background;
-	border-color: $panel-header-border;
-	border-style: solid;
-	border-width: 0 0 0 1px;
-	height: $panel-header-height;
-	position: relative;
-	vertical-align: middle;
-}
+    > header {
+        background-color: $panel-header-background;
+        border-color: $panel-header-border;
+        border-style: solid;
+        border-width: 0 0 0 1px;
+        height: $panel-header-height;
+        position: relative;
+        vertical-align: middle;
 
-.panels .panel:first-child header {
-	border-width: 0;
-}
+        nav {
+            display: inline-block;
+            position: relative;
 
-/* :navigation */
-.panel > header nav {
-	display: inline-block;
-	position: relative;
-}
+            ul {
+                display: inline-block;
+                margin: 0;
+                padding: 0;
+                position: relative;
 
-.panel > header nav ul {
-	display: inline-block;
-	margin: 0;
-	padding: 0;
-	position: relative;
-}
+                li {
+                    border-color: $panel-nav-border;
+                    border-width: 0 1px 0 1px;
+                    border-style: solid;
+                    box-sizing: border-box;
+                    display: inline-block;
+                    font-size: 15px;
+                    height: $panel-header-height;
+                    line-height: $panel-header-height;
+                    list-style-type: none;
+                    width: 50px;
 
-.panel > header nav ul li {
-	border-color: $panel-nav-border;
-	border-width: 0 1px 0 1px;
-	border-style: solid;
-	box-sizing: border-box;
-	display: inline-block;
-	font-size: 15px;
-	height: $panel-header-height;
-	line-height: $panel-header-height;
-	list-style-type: none;
-	width: 50px;
-}
+                    &:hover {
+                        background-color: $panel-nav-background-hover;
+                    }
 
-.panel > header nav ul li:hover {
-	background-color: $panel-nav-background-hover;
+                    &:nth-child(2n) {
+                        border-left-color: transparent !important;
+                    }
+
+                    a {
+                        box-sizing: border-box;
+                        color: $panel-nav-link-color;
+                        cursor: pointer;
+                        display: inline-block;
+                        height: $panel-header-height;
+                        text-align: center;
+                        text-decoration: none;
+                        vertical-align: top;
+                        width: 100%;
+
+                        i {
+                            font-size: 30px;
+                            line-height: $panel-header-height;
+
+                            &.big-icon {
+                                font-size: $panel-header-height;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        h1 {
+            color: $panel-title-color;
+            display: inline-block;
+            font-size: 16px;
+            font-weight: 300;
+            line-height: $panel-header-height;
+            margin: 0 0 0 20px;
+            min-width: 200px;
+            padding: 0;
+            width: 45%;
+        }
+    }
+
+    > article {
+        background-color: $panel-content-background;
+        border-color: $panel-content-color;
+        border-style: solid;
+        border-width: 0 0 0 1px;
+        margin: 0;
+        padding: 0;
+
+        h1 {
+            font-size: 30px;
+            font-weight: 100;
+            line-height: 55px;
+            margin: 0 0 40px 0;
+            padding: 0;
+        }
+    }
 }
 
 .panel > header nav li.wide,
 .panel > header nav.wide li {
-	width: 65px;
-}
-
-.panel > header nav ul li:nth-child(2n) {
-	border-left-color: transparent !important;
-}
-
-.panel > header nav ul li  a {
-	box-sizing: border-box;
-	color: $panel-nav-link-color;
-	cursor: pointer;
-	display: inline-block;
-	height: $panel-header-height;
-	text-align: center;
-	text-decoration: none;
-	vertical-align: top;
-	width: 100%;
-}
-
-.panel > header nav ul li  a i {
-	font-size: 30px;
-	line-height: $panel-header-height;
-}
-
-.panel > header nav ul li  a i.big-icon {
-	font-size: $panel-header-height;
-}
-
-/* :heading */
-.panel > header h1 {
-	color: $panel-title-color;
-	display: inline-block;
-	font-size: 16px;
-	font-weight: 300;
-	line-height: $panel-header-height;
-	margin: 0 0 0 20px;
-	min-width: 200px;
-	padding: 0;
-	width: 45%;
-}
-
-/* :content */
-.panel > article {
-	background-color: $panel-content-background;
-	border-color: $panel-content-color;
-	border-style: solid;
-	border-width: 0 0 0 1px;
-	margin: 0;
-	padding: 0;
-}
-
-.panels .panel:first-child article {
-	border-width: 0;
-}
-
-.panel > article h1 {
-	font-size: 30px;
-	font-weight: 100;
-	line-height: 55px;
-	margin: 0 0 40px 0;
-	padding: 0;
+    width: 65px;
 }
