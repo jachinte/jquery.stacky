@@ -1,6 +1,6 @@
 {
     "name": "jachinte/jquery.stacky",
-    "description": "Easy creation and stacking panels using jQuery",
+    "description": "Easy stacking of panels using jQuery",
     "keywords": [
         "browser", "animated", "animation", "jquery",
         "stacking", "panel"
