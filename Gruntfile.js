@@ -11,8 +11,8 @@ module.exports = function(grunt) {
                 '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %> - <%= pkg.author.web %> \n*/\n'
           }, 
           build: {
-            src: 'src/jquery.stacky.js',
-            dest: 'dist/jquery.stacky.js'
+            src: 'src/js/jquery.stacky.js',
+            dest: 'dist/js/jquery.stacky.js'
           }
         },
 
@@ -21,7 +21,7 @@ module.exports = function(grunt) {
           options: {
             reporter: require('jshint-stylish')
           },
-          all: ['src/*.js']
+          all: ['src/js/*.js']
         },
 
         // configure uglify to minify js files -------------------------------------
@@ -33,38 +33,29 @@ module.exports = function(grunt) {
           }, 
           build: {
             files: {
-              'dist/jquery.stacky.min.js': 'dist/jquery.stacky.js'
+              'dist/js/jquery.stacky.min.js': 'dist/js/jquery.stacky.js'
             }
           }
         },
 
         // configure watch to auto update ------------------------------------------
-        cssmin: {
-          options: {
-            noAdvanced: true
-          },
-          css: {
-            src: 'src/css/*.css',
-            dest: 'dist/css/stacky.min.css'
-          },
-          minify: {
-            files: [{
-              expand: true,
-              cwd: 'src/css/',
-              src: ['*.css', '!*.min.css'],
-              dest: 'dist/css/',
-              ext: '.css'
-            }, {
-              expand: true,
-              cwd: 'src/css/',
-              src: ['*.min.css'],
-              dest: 'dist/css/',
-              ext: '.min.css'
-            }]
+        watch: {
+          scripts: {
+            files: 'src/js/*.js',
+            tasks: ['concat', 'uglify']
           }
         },
 
-        // configure cssmin to concat and minify css files -------------------------
+        // configure sass to compile, concat and minify css files ------------------
+        sass: {
+          dist: {
+            options: {
+              style: 'expanded'
+            },
+            src: 'src/sass/styles.scss',
+            dest: 'dist/css/jquery.stacky.css'
+          }
+        }
 
     });
 
@@ -72,8 +63,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-sass');
 
-    grunt.registerTask('default', ['concat', 'uglify', 'cssmin']);
+    grunt.registerTask('default', ['concat', 'uglify', 'sass']);
 
 };

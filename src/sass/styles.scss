@@ -1,17 +1,28 @@
 /*
  * CONTENTS
  * 
- * 1. GENERAL CONFIGURATION
- * 2. HEIGHT ISSUES
- * 3. UTIL CLASSES
- * 4. PANEL CONTAINER STYLES
- * 5. PANEL STYLES
+ * 1. IMPORTS
+ * 2. VARIABLES
+ * 3. GENERAL CONFIGURATION
+ * 4. HEIGHT ISSUES
+ * 5. UTIL CLASSES
+ * 6. PANEL CONTAINER STYLES
+ * 7. PANEL STYLES
  */
+
+/*
+ * 1. IMPORTS
+ */
+@import 'theme';
+
+/*
+ * 2. VARIABLES
+ */
+$panel-header-height: 45px;
 
 /* 
- * 1. GENERAL CONFIGURATION 
+ * 3. GENERAL CONFIGURATION 
  */
-
 body {
 	font-family: "Roboto", sans-serif;
   	font-weight: normal;
@@ -19,7 +30,7 @@ body {
 }
 
 /* 
- * 2. HEIGHT ISSUES 
+ * 4. HEIGHT ISSUES 
  */
 body,
 html,
@@ -31,7 +42,7 @@ html,
 }
 
 .panel > article {
-	height: calc(100% - 45px);
+	height: calc(100% - #{$panel-header-height});
 }
 
 .main,
@@ -44,10 +55,10 @@ html,
 }
 
 /* 
- * 3. UTIL CLASSES 
+ * 5. UTIL CLASSES 
  */
 .show-shadow .shadow-left {
-	background-image: url(content_shadow_side_left.png);
+	background-image: url(../images/content_shadow_side_left.png);
 	background-size: 100% 100%;
 	bottom: 0;
 	left: -11px;
@@ -58,7 +69,7 @@ html,
 }
 
 .show-shadow .shadow-right {
-	background-image: url(content_shadow_side_right.png);
+	background-image: url(../images/content_shadow_side_right.png);
 	background-size: 100% 100%;
 	bottom: 0;
 	opacity: 0.1;
@@ -94,25 +105,28 @@ html,
 }
 
 /* 
- * 4. PANEL CONTAINER STYLES 
+ * 6. PANEL CONTAINER STYLES 
  */
 .main {
+	background-color: $main-background;
 	margin: 0;
 	overflow-x: auto;
 	width: 100%;
 }
 
 .main > header {
-	border-width: 0 0 1px 0;
+	background-color: $main-header-background;
+	border-color: $main-header-border;
 	border-style: solid;
-	height: 45px;
+	border-width: 0 0 1px 0;
+	height: $panel-header-height;
 	position: fixed;
 	top: 0;
 	width: 100%;
 }
 
 /* 
- * 5. PANEL STYLES 
+ * 7. PANEL STYLES 
  */
 
 .panels {
@@ -138,9 +152,11 @@ html,
 }
 
 .panel > header {
+	background-color: $panel-header-background;
+	border-color: $panel-header-border;
 	border-style: solid;
 	border-width: 0 0 0 1px;
-	height: 45px;
+	height: $panel-header-height;
 	position: relative;
 	vertical-align: middle;
 }
@@ -163,15 +179,20 @@ html,
 }
 
 .panel > header nav ul li {
+	border-color: $panel-nav-border;
 	border-width: 0 1px 0 1px;
 	border-style: solid;
 	box-sizing: border-box;
 	display: inline-block;
 	font-size: 15px;
-	height: 45px;
-	line-height: 45px;
+	height: $panel-header-height;
+	line-height: $panel-header-height;
 	list-style-type: none;
 	width: 50px;
+}
+
+.panel > header nav ul li:hover {
+	background-color: $panel-nav-background-hover;
 }
 
 .panel > header nav li.wide,
@@ -185,9 +206,10 @@ html,
 
 .panel > header nav ul li  a {
 	box-sizing: border-box;
+	color: $panel-nav-link-color;
 	cursor: pointer;
 	display: inline-block;
-	height: 45px;
+	height: $panel-header-height;
 	text-align: center;
 	text-decoration: none;
 	vertical-align: top;
@@ -196,19 +218,20 @@ html,
 
 .panel > header nav ul li  a i {
 	font-size: 30px;
-	line-height: 45px;
+	line-height: $panel-header-height;
 }
 
 .panel > header nav ul li  a i.big-icon {
-	font-size: 45px;
+	font-size: $panel-header-height;
 }
 
 /* :heading */
 .panel > header h1 {
+	color: $panel-title-color;
 	display: inline-block;
 	font-size: 16px;
 	font-weight: 300;
-	line-height: 45px;
+	line-height: $panel-header-height;
 	margin: 0 0 0 20px;
 	min-width: 200px;
 	padding: 0;
@@ -217,6 +240,8 @@ html,
 
 /* :content */
 .panel > article {
+	background-color: $panel-content-background;
+	border-color: $panel-content-color;
 	border-style: solid;
 	border-width: 0 0 0 1px;
 	margin: 0;

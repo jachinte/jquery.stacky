@@ -1,5 +1,5 @@
 /*
-* jquery.stacky - v1.0.0 - 2015-02-12 
+* jquery.stacky - v0.1.0 - 2015-02-12 
 * https://github.com/jachinte/jquery.stacky/
 * Copyright (c) 2015 Miguel A. Jiménez - http://migueljimenez.co 
 */
