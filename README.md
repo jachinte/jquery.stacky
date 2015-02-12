@@ -1,2 +1,2 @@
 # jquery.stacky
-Easy creation and stacking panels using jQuery
+Easy stacking of panels using jQuery
