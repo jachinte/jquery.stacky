@@ -1,0 +1,90 @@
+/*
+ * CONTENTS:
+ * 
+ * 1. GRAY
+ * 2. DARK (BLACK)
+ */
+
+/*
+ * 1. GRAY THEME
+ */
+.gray-theme .main {
+	background-color: #ccc;
+}
+
+/* :main */
+.gray-theme .main > header {
+	background-color: transparent;
+	border-color: transparent;
+}
+
+/* :navigation */
+.gray-theme .panel > header {
+	background-color: #383838;
+	border-color: rgb(40, 40, 40);
+}
+
+.gray-theme .panel > header nav ul li {
+	border-color: #484848;
+}
+
+.gray-theme .panel > header nav ul li:hover {
+	background-color: #303030;
+}
+
+.gray-theme .panel > header nav ul li a {
+	color: #fff;
+}
+
+/* :heading */
+.gray-theme .panel > header h1 {
+	color: #fff;
+}
+
+/* :content */
+.gray-theme .panel > article {
+	background-color: #fafafa;
+	border-color: #cdcdcd;
+}
+
+/*
+ * 2. DARK THEME
+ */
+.dark-theme .main {
+	background-color: #626262;
+}
+
+/* :main */
+.dark-theme .main > header {
+	background-color: transparent;
+	border-color: transparent;
+}
+
+/* :navigation */
+.dark-theme .panel > header {
+	background-color: #18181C;
+	border-color: #000;
+}
+
+.dark-theme .panel > header nav ul li {
+	border-color: #333;
+}
+
+.dark-theme .panel > header nav ul li:hover {
+	background-color: #242424;
+}
+
+.dark-theme .panel > header nav ul li a {
+	color: #fff;
+}
+
+/* :heading */
+.dark-theme .panel > header h1 {
+	color: #fff;
+}
+
+/* :content */
+.dark-theme .panel > article {
+	background-color: #FFFDFF;
+	border-color: #ccc;
+}

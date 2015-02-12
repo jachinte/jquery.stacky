@@ -1,0 +1,31 @@
+{
+    "name": "jquery.stacky",
+    "version": "1.0.0",
+    "author": {
+        "name": "Miguel A. Jiménez",
+        "web": "http://migueljimenez.co"
+    },
+    "keywords": [
+        "browser", "animated", "animation", "jquery",
+        "stacking", "panel"
+    ],
+    "homepage": "https://github.com/jachinte/jquery.stacky",
+    "main": [
+        "./dist/jquery.stacky.min.js"
+    ],
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "demo",
+        "tests",
+        "changes.txt",
+        "package.json",
+        "composer.json",
+        "stacky.jquery.json"
+    ],
+    "dependencies": {
+        "jquery": ">=1.7.2",
+        "jquery.scrollTo": "1.4.14"
+    }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "jquery.stacky",
+  "version": "1.0.0",
+  "description": "Easy creation and stacking panels using jQuery",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jachinte/jquery.stacky"
+  },
+  "author": {
+    "name": "Miguel A. Jiménez",
+    "web": "http://migueljimenez.co"
+  },
+  "bugs": {
+    "url": "https://github.com/jachinte/jquery.stacky/issues/"
+  },
+  "homepage": "https://github.com/jachinte/jquery.stacky/",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "~0.5.0",
+    "grunt-contrib-cssmin": "^0.12.1",
+    "grunt-contrib-jshint": "^0.11.0",
+    "grunt-contrib-uglify": "^0.5.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "jshint-stylish": "^0.4.0"
+  }
+}

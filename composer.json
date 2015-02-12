@@ -1,0 +1,32 @@
+{
+    "name": "jachinte/jquery.stacky",
+    "description": "Easy creation and stacking panels using jQuery",
+    "keywords": [
+        "browser", "animated", "animation", "jquery",
+        "stacking", "panel"
+    ],
+    "homepage": "https://github.com/jachinte/jquery.stacky",
+    "support": {
+        "issues": "https://github.com/jachinte/jquery.stacky/issues",
+        "source": "https://github.com/jachinte/jquery.stacky"
+    },
+    "authors": [
+        {
+            "name": "Miguel A. Jiménez",
+            "web": "http://migueljimenez.co/"
+        }
+    ],
+    "require": {
+        "components/jquery": ">=1.7.2"
+    },
+    "extra": {
+        "component": {
+            "scripts": [
+                "./dist/jquery.stacky.js"
+            ],
+            "files": [
+                "./dist/jquery.stacky.min.js"
+            ]
+        }
+    }
+}
