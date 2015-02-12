@@ -11,5 +11,6 @@ logs
 results
 
 node_modules
+.sass-cache
 npm-debug.log
 .DS_Store
