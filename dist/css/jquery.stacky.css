@@ -103,14 +103,14 @@ html,
  * 6. PANEL CONTAINER STYLES 
  */
 .main {
-  background-color: #626262;
+  background-color: #CCCCCC;
   margin: 0;
   overflow-x: auto;
   width: 100%;
 }
 .main > header {
-  background-color: transparent;
-  border-color: transparent;
+  background-color: #666666;
+  border-color: #555555;
   border-style: solid;
   border-width: 0 0 1px 0;
   height: 45px;
@@ -136,18 +136,24 @@ html,
 .panel {
   display: inline-block;
   position: relative;
-  width: 300px;
+  width: 400px;
   z-index: 1;
 }
 .panel.wide {
   width: 800px;
 }
 .panel.medium {
-  width: 500px;
+  width: 600px;
+}
+.panel.thin {
+  width: 300px;
+}
+.panel.expanded {
+  width: 100% !important;
 }
 .panel > header {
-  background-color: #18181C;
-  border-color: #000000;
+  background-color: #383838;
+  border-color: #282828;
   border-style: solid;
   border-width: 0 0 0 1px;
   height: 45px;
@@ -165,7 +171,7 @@ html,
   position: relative;
 }
 .panel > header nav ul li {
-  border-color: #333333;
+  border-color: #484848;
   border-width: 0 1px 0 1px;
   border-style: solid;
   box-sizing: border-box;
@@ -177,7 +183,7 @@ html,
   width: 50px;
 }
 .panel > header nav ul li:hover {
-  background-color: #242424;
+  background-color: #303030;
 }
 .panel > header nav ul li:nth-child(2n) {
   border-left-color: transparent !important;
@@ -212,8 +218,8 @@ html,
   width: 45%;
 }
 .panel > article {
-  background-color: #FFFDFF;
-  border-color: #CCCCCC;
+  background-color: #FAFAFA;
+  border-color: #CDCDCD;
   border-style: solid;
   border-width: 0 0 0 1px;
   margin: 0;

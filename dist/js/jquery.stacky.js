@@ -64,7 +64,11 @@
                 var elem = options.navigation.left[i];
 
                 var icon = $('<i></i>').addClass(elem.iconClass);
-                var link = $('<a></a>').attr('href', elem.link).addClass(elem.linkClass).append(icon);
+                var link = $('<a></a>')
+                    .attr('href', elem.link)
+                    .attr('title', elem.alt)
+                    .addClass(elem.linkClass)
+                    .append(icon);
                 var listItem = $('<li></li>').append(link);
 
                 ul.append(listItem);
@@ -80,7 +84,11 @@
                 var elem = options.navigation.right[i];
 
                 var icon = $('<i></i>').addClass(elem.iconClass);
-                var link = $('<a></a>').attr('href', elem.link).addClass(elem.linkClass).append(icon);
+                var link = $('<a></a>')
+                    .attr('href', elem.link)
+                    .attr('title', elem.alt)
+                    .addClass(elem.linkClass)
+                    .append(icon);
                 var listItem = $('<li></li>').append(link);
 
                 ul.append(listItem);
@@ -152,6 +160,7 @@
             right: [
                 {
                     link: '#',
+                    alt: 'Close panel',
                     linkClass: 'close',
                     iconClass: 'pe-7s-close big-icon'
                 }

@@ -148,7 +148,7 @@ html,
 .panel {
     display: inline-block;
     position: relative;
-    width: 300px;
+    width: 400px;
     z-index: 1;
 
     &.wide {
@@ -156,7 +156,15 @@ html,
     }
 
     &.medium {
-        width: 500px;
+        width: 600px;
+    }
+
+    &.thin {
+        width: 300px;
+    }
+
+    &.expanded {
+        width: 100% !important;
     }
 
     > header {
