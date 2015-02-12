@@ -18,7 +18,7 @@ $(document).ready(function(){
     $("body").on('click', ".open-panel", function(){
 
         var afterPanel = $(this).closest('.panel');
-        console.log(afterPanel);
+
         if(afterPanel.length == 0){
             afterPanel = undefined;
         }
