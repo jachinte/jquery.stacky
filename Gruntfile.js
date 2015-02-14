@@ -11,7 +11,7 @@ module.exports = function(grunt) {
                 '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %> - <%= pkg.author.web %> \n*/\n'
           }, 
           build: {
-            src: 'src/js/jquery.stacky-0.1.1.js',
+            src: 'src/js/jquery.stacky.js',
             dest: 'dist/js/jquery.stacky.js'
           }
         },

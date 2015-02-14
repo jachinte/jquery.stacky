@@ -1,5 +1,5 @@
 /*
-* jquery.stacky - v0.1.0 - 2015-02-13 
+* jquery.stacky - v0.1.0 - 2015-02-14 
 * https://github.com/jachinte/jquery.stacky/
 * Copyright (c) 2015 Miguel A. Jiménez - http://migueljimenez.co 
 */
@@ -28,6 +28,7 @@
                     right: []
                 },
                 content: '',
+                floating: false,
                 id: '',
                 size: 'medium', // thin, medium, wide
                 title: ''
@@ -40,6 +41,8 @@
         };
 
         var classes = {
+            // Used to indicate the latest added panel
+            active: 'active',
             /*
              * It is added to the panel container the first time a panel is appended,
              * to indicate that the click event for closing panels has been already 
@@ -82,14 +85,14 @@
             expandIcon: 'pe-7s-angle-up', 
             // Indicates that a panel has been expanded
             expanded: 'expanded',
+            // Indicates that a panel must be placed with an absolute position
+            floating: 'floating',
             // Util class to change the floating property of a DOM element (set to 'left')
             floatLeft: 'left', 
             // Util class to change the floating property of a DOM element (set to 'right')
             floatRight: 'right',
             // Provides a way to add styles to panels
             panel: 'panel',
-            // Used to indicate the latest added panel
-            showShadow: 'show-shadow',
             // Util class to add shadow at the left side of a DOM element
             shadowLeft: 'shadow-left',
             // Util class to add shadow at the right side of a DOM element
@@ -125,25 +128,27 @@
                 container = $element;
 
             // As this is the latest panel, show left and right shadow
-            panel.addClass(classes.showShadow);
-            panel.css('display', 'none').css('z-index', '' + plugin.panels.length);
+            panel.addClass(classes.active);
+            panel.css('display', 'none').css('z-index', '' + (plugin.panels.length + 1));
 
             /*
              * Remove shadow in all panels (there is no certainty in which panel has
              * shadow. It is not always the last one)
              */
             container.find('.' + classes.panel)
-                .removeClass(classes.showShadow);
+                .removeClass(classes.active);
             
             /*
              * Append the panel in the corresponding position: after another panel
              * or at the end of all panels
              */
-            if(panelSettings.after !== undefined){
+            if(panelSettings.after !== undefined 
+                && !panelSettings.after.hasClass(classes.floating)){
+
                 panelSettings.after.after(panel);
 
                 // Store new panel in the panels array
-                var previousElemIndex = $.inArray(panelSettings.after, plugin.panels);
+                var previousElemIndex = $element.find('.' + classes.panel).index(panelSettings.after);
                 plugin.panels.splice(previousElemIndex + 1, 0, panel);
 
             }else{
@@ -151,9 +156,6 @@
                 // Store new panel in the panels array
                 plugin.panels.push(panel);
             }
-
-            // Finally, show the recently created panel
-            panel.fadeIn(plugin.settings.fadeInSpeed);
 
             // Bind click events
             // close panel
@@ -171,8 +173,11 @@
                 .addClass(classes.collapseClickBound)
                 .on('click', '.' + classes.collapse, { self: plugin }, collapsePanel);
 
+            // Finally, show the recently created panel
+            panel.fadeIn(plugin.settings.fadeInSpeed);
+
             if($.fn.scrollTo){
-                container.scrollTo(panel, plugin.settings.scrollToSpeed);
+                container.scrollTo(goTo(panelSettings, panel), plugin.settings.scrollToSpeed);
             }
         };
 
@@ -184,7 +189,9 @@
          */
         var createPanelStructure = function(panelSettings) {
             var divStr = '<div></div>',
-                panel = $('<section></section>').addClass(classes.panel).addClass(panelSettings.size),
+                panel = $('<section></section>')
+                            .addClass(classes.panel)
+                            .addClass(panelSettings.size),
                 header = $('<header></header>'),
                 navs = createNavs(panelSettings),
                 content = $(divStr).addClass(classes.content),
@@ -195,7 +202,6 @@
             if(panelSettings.content !== ''){
                 content.append(panelSettings.content);
             }
-
             header.append(navs).append(shadowLeft.add(shadowRight));
 
             if(panelSettings.title !== ''){
@@ -204,13 +210,26 @@
             }
 
             article.append(content);
-            panel.append(header).append(article);
+            panel
+                .attr('id', panelSettings.id)
+                .append(header)
+                .append(article)
+                .append(shadowLeft.add(shadowRight));
 
-            if(panelSettings.id !== ''){
-                panel.attr('id', panelSettings.id);
+            if(panelSettings.floating === true){
+                panel.addClass(classes.floating);
+                var leftOffset = 0;
+
+                if(panelSettings.after !== undefined){
+                    var afterElemIndex = $element.find('.' + classes.panel).index(panelSettings.after);
+
+                    for(var i = 0; i < plugin.panels.length && i <= afterElemIndex; i++){
+                        leftOffset += plugin.panels[i].outerWidth();
+                    }
+                }
+                panel.css('left', leftOffset + 'px');
             }
 
-            panel.append(shadowLeft.add(shadowRight));
             return panel;
         };
 
@@ -219,12 +238,11 @@
          */
         var createNavs = function(panelSettings) {
             var navLeft = $('<nav></nav>').addClass(classes.floatLeft),
-                navRight = $('<nav></nav>').addClass(classes.floatRight),
-                leftUl = $('<ul></ul>'),
-                rightUl = $('<ul></ul>');
+                navRight = $('<nav></nav>').addClass(classes.floatRight);
 
             // Add the expand/collapse link, if activated
             if(panelSettings.maximize.show === true 
+                && panelSettings.floating === false
                 && (panelSettings.maximize.position === 'left'
                     || panelSettings.maximize.position === 'right')){
 
@@ -250,37 +268,41 @@
             }
 
             // Action links for left nav
-            for(var i = 0; i < panelSettings.navigation.left.length; i++){
-                var elem = panelSettings.navigation.left[i],
-                    icon = $('<i></i>').addClass(elem.iconClass),
-                    link = $('<a></a>')
-                        .attr('href', elem.link)
-                        .attr('title', elem.alt)
-                        .addClass(elem.linkClass)
-                        .append(icon),
-                    listItem = $('<li></li>').append(link);
-                leftUl.append(listItem);
-            }
-
-            navLeft.append(leftUl);
-
+            navLeft.append(addActionLinks(panelSettings.navigation.left));
             // Action links for right nav
-            for(var i = 0; i < panelSettings.navigation.right.length; i++){
-                var elem = panelSettings.navigation.right[i],
-                    icon = $('<i></i>').addClass(elem.iconClass),
-                    link = $('<a></a>')
-                        .attr('href', elem.link)
-                        .attr('title', elem.alt)
-                        .addClass(elem.linkClass)
-                        .append(icon),
-                    listItem = $('<li></li>').append(link);
-                rightUl.append(listItem);
-            }
-
-            navRight.append(rightUl);
+            navRight.append(addActionLinks(panelSettings.navigation.right));
 
             // Both navs
             return navLeft.add(navRight);
+        };
+
+        /*
+         * Returns the element to which the scrollbar should move. If the element
+         * is a floating panel, the scrollbar should move to its x position
+         */
+        var goTo = function(panelSettings, panel) {
+            if(panelSettings.floating === true){
+                return panel.css('left');
+            }else{
+                return panel;
+            }
+        };
+
+        // Utility method to add actions link to an unordered list
+        var addActionLinks = function(linksArray) {
+            var ul = $('<ul></ul>');
+            for(var i = 0; i < linksArray.length; i++){
+                var elem = linksArray[i],
+                    icon = $('<i></i>').addClass(elem.iconClass),
+                    link = $('<a></a>')
+                        .attr('href', elem.link)
+                        .attr('title', elem.alt)
+                        .addClass(elem.linkClass)
+                        .append(icon),
+                    listItem = $('<li></li>').append(link);
+                ul.append(listItem);
+            }
+            return ul;
         };
 
         /*
@@ -289,7 +311,11 @@
         var closePanel = function (event) {
             var self = event.data.self,
                 panel = $(this).closest('.' + classes.panel),
-                hasShadow = panel.hasClass(classes.showShadow);
+                hasShadow = panel.hasClass(classes.active),
+                index = $element.find('.' + classes.panel).index(panel);
+
+            // Remove the panel from the panels array
+            plugin.panels.splice(index, 1);
 
             // Remove the DOM element
             panel.remove();
@@ -297,7 +323,7 @@
             if(hasShadow){
                 $element.find('.' + classes.panel)
                     .last()
-                    .addClass(classes.showShadow);
+                    .addClass(classes.active);
             }
         };
 

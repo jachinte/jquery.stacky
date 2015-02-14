@@ -1,7 +1,5 @@
 // Black theme
 $main-background: #626262;
-$main-header-background: #444444;
-$main-header-border: #555555;
 
 $panel-header-background: #18181C;
 $panel-header-border: #000000;
@@ -10,13 +8,14 @@ $panel-nav-background-hover: #242424;
 $panel-nav-link-color: #FFFFFF;
 $panel-title-color: #FFFFFF;
 $panel-content-background: #FFFDFF;
+$panel-floatin-content-background: #333333;
+$panel-floatin-header-border: #666666;
+$panel-floatin-content-border: #DDDDDD;
 $panel-content-color: #CCCCCC;
 
 
 // Gray theme
 $main-background: #CCCCCC;
-$main-header-background: #666666;
-$main-header-border: #555555;
 
 $panel-header-background: #383838;
 $panel-header-border: rgb(40, 40, 40);
@@ -25,4 +24,7 @@ $panel-nav-background-hover: #303030;
 $panel-nav-link-color: #FFFFFF;
 $panel-title-color: #FFFFFF;
 $panel-content-background: #FAFAFA;
+$panel-floatin-content-background: #EEEEEE;
+$panel-floatin-header-border: #222222;
+$panel-floatin-content-border: #DDDDDD;
 $panel-content-color: #CDCDCD;

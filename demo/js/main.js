@@ -25,7 +25,7 @@ $(document).ready(function(){
         
         $('#panels').data('Stacky').push({
             title: 'Title ' + (panels + 1),
-            panelId: 'panel' + (panels + 1),
+            id: 'panel' + (panels + 1),
             navigation: {
                 left: [
                     {
@@ -36,8 +36,9 @@ $(document).ready(function(){
                     }
                 ]
             },
-            size: sizes[getRandomInt(0, 3)],    // Creates panels of random size
-            after: afterPanel
+            // floating: getRandomInt(0, 2) === 0 ? true : false,
+            size: sizes[getRandomInt(0, 3)],                            // Create panels of random size
+            after: getRandomInt(0, 2) === 0 ? afterPanel : undefined    // Open the new panel next to itself or at the end (randome choice)
         });
 
         panels++;
