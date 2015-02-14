@@ -179,6 +179,10 @@ html,
             display: inline-block;
             position: relative;
 
+            &.right ul li:last-child {
+                border-width: 0 0 0 1px;
+            }
+
             ul {
                 display: inline-block;
                 margin: 0;

@@ -161,6 +161,9 @@ html,
   display: inline-block;
   position: relative;
 }
+.panel > header nav.right ul li:last-child {
+  border-width: 0 0 0 1px;
+}
 .panel > header nav ul {
   display: inline-block;
   margin: 0;
