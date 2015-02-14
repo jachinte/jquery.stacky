@@ -25,15 +25,9 @@
                 content: '',            // HTML to be inserted into the panel
                 floating: false,        // Indicates if the new panel should be placed using absolute position
                 id: '',                 // id attribute of the new panel
-                onBeforeOpen: function($panel){
-                    // This function is called before fading in the new panel
-                },
-                onBeforeClose: function($panel){
-                    /*
-                     * This function is called after the panel has been hidden, and 
-                     * before removing the corresponding DOM element
-                     */
-                },
+                onBeforeOpen: function($panel){},   // It's called before fading in the new panel
+                onBeforeClose: function($panel){},  // It's called before hiding and removing the panel.
+                                                    // If a false value is returned, the panel must remain opened
                 size: '',               // thin, medium, wide
                 title: ''               // The panel's title
             },
@@ -181,7 +175,7 @@
                 .addClass(classes.collapseClickBound)
                 .on('click', '.' + classes.collapse, { self: plugin }, collapsePanel);
 
-            // If there is a callback, it is executed
+            // If there is a callback, execute it!
             if(panelSettings.onBeforeOpen 
                 && typeof panelSettings.onBeforeOpen === 'function'){
                 panelSettings.onBeforeOpen(panel);
@@ -332,14 +326,17 @@
                 hasShadow = panel.hasClass(classes.active),
                 index = $element.find('.' + classes.panel).index(panel);
 
+            // If there is a callback, execute it!
+            if(typeof panelSettings.onBeforeClose === 'function'){
+                // If a false value is returned by the callback, the panel must remain opened
+                if(panelSettings.onBeforeClose(panel) === false){
+                    event.preventDefault();
+                    return;
+                }
+            }
+
             // Hide the panel
             panel.hide();
-
-            // If there is a callback, it is executed
-            if(panelSettings.onBeforeClose 
-                && typeof panelSettings.onBeforeClose === 'function'){
-                panelSettings.onBeforeClose(panel);
-            }
 
             // Remove the panel from the panels array
             plugin.panels.splice(index, 1);
@@ -408,13 +405,10 @@
 
      // add the plugin to the jQuery.fn object
      $.fn[pluginName] = function(options) {
-
         // iterate through the DOM elements we are attaching the plugin to
         return this.each(function() {
-
           // if plugin has not already been attached to the element
           if (undefined == $(this).data(pluginName)) {
-
               // create a new instance of the plugin
               // pass the DOM element and the user-provided options as arguments
               var plugin = new $[pluginName](this, options);

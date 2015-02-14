@@ -32,7 +32,7 @@ $(document).ready(function(){
                 console.log('About to be shown', $panel);
             },
             onBeforeClose: function($panel){
-                console.log('Recently hidden, and about to be removed', $panel);
+                console.log('About to be removed', $panel);
             }
         }
     });
