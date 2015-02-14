@@ -98,6 +98,8 @@
             floatRight: 'right',
             // Provides a way to add styles to panels
             panel: 'panel',
+            // Provides a way to add styles to panels
+            panels: 'panels',
             // Util class to add shadow at the left side of a DOM element
             shadowLeft: 'shadow-left',
             // Util class to add shadow at the right side of a DOM element
@@ -122,6 +124,7 @@
             // the plugin's final properties are the merged default and
             // user-provided options (if any)
             plugin.settings = $.extend(true, {}, defaults, options);
+            $element.addClass(classes.panels);
         };
 
         // public methods
