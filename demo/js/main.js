@@ -10,7 +10,7 @@ $(document).ready(function(){
 
     $('#panels').Stacky({
         fadeInSpeed: 'fast',
-        scrollToSpeed: 300,
+        scrollToSpeed: 600,
         panelDefaults: {
             navigation: {
                 left: [

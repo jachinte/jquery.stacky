@@ -7,7 +7,7 @@
 
         var defaults = {
             fadeInSpeed: 'fast',        // Speed when making the new panel visible
-            scrollToSpeed: 400,         // Speed when moving the scroll bar
+            scrollToSpeed: 600,         // Speed when moving the scroll bar
             panelDefaults: {            // All panels are created with these settings, unless they override them
                 after: undefined,       // If different than undefined, the new panel is inserted after this jQuery element
                 close: {                // Action link to close the panel
@@ -183,10 +183,7 @@
 
             // Finally, show the recently created panel
             panel.fadeIn(plugin.settings.fadeInSpeed);
-
-            if($.fn.scrollTo){
-                container.scrollTo(goTo(panelSettings, panel), plugin.settings.scrollToSpeed);
-            }
+            container.animate({scrollLeft: leftOffset(panel)}, plugin.settings.scrollToSpeed);
 
             // Return the jQuery object
             return panel;
@@ -287,16 +284,15 @@
             return navLeft.add(navRight);
         };
 
-        /*
-         * Returns the element to which the scrollbar should move. If the element
-         * is a floating panel, the scrollbar should move to its x position
-         */
-        var goTo = function(panelSettings, panel) {
-            if(panelSettings.floating === true){
-                return panel.css('left');
-            }else{
-                return panel;
+        var leftOffset = function($panel) {
+            var panelIndex = $element.find('.' + classes.panel).index($panel),
+                leftOffset = 0;
+
+            for(var i = 0; i < plugin.panels.length && i <= panelIndex; i++){
+                leftOffset += plugin.panels[i].outerWidth();
             }
+
+            return leftOffset;
         };
 
         // Utility method to add actions link to an unordered list
@@ -369,10 +365,7 @@
                 .addClass(classes.collapseIcon);
 
             panel.addClass(classes.expanded);
-
-            if($.fn.scrollTo){
-                $element.scrollTo(panel, self.settings.scrollToSpeed);
-            }
+            $element.animate({scrollLeft: leftOffset(panel)}, self.settings.scrollToSpeed);
         };
 
         /*
@@ -393,10 +386,7 @@
                 .addClass(classes.expandIcon);
                 
             panel.removeClass(classes.expanded);
-
-            if($.fn.scrollTo){
-                $element.scrollTo(panel, self.settings.scrollToSpeed);
-            }
+            $element.animate({scrollLeft: leftOffset(panel)}, self.settings.scrollToSpeed);
         };
 
         // call the "constructor" method
