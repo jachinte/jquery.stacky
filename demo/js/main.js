@@ -1,8 +1,7 @@
 $(document).ready(function(){
     'use strict';
 
-    var panels = 0,
-        sizes = ['thin', 'medium', 'wide'];
+    var sizes = ['thin', 'medium', 'wide'];
 
     // Returns a random integer between min (included) and max (excluded)
     function getRandomInt(min, max) {
@@ -26,38 +25,36 @@ $(document).ready(function(){
     $("body").on('click', ".open-panel", function(){
         
         var self = $(this),
-            afterPanel = self.closest('.panel');
+            afterPanel = self.closest('.panel'),
+            identifier = getRandomInt(0, 1000);
 
         if(afterPanel.length == 0){
             afterPanel = undefined;
         }
         
-        $('#panels').data('Stacky').push({
-            title: 'Title ' + (panels + 1),
-            id: 'panel' + (panels + 1),
-            navigation: {
-                left: [
-                    {
-                        link: '#!',
-                        alt: 'Open a new panel',
-                        linkClass: 'open-panel',
-                        iconClass: 'pe-7s-angle-right big-icon'
-                    },
-                    {
-                        link: '#!',
-                        alt: 'Open a new floating panel',
-                        linkClass: 'open-panel open-floating-panel',
-                        iconClass: 'pe-7s-angle-right-circle'
-                    }
-                ]
-            },
-            floating: self.hasClass('open-floating-panel'),
-            size: sizes[getRandomInt(0, 3)],                            // Create panels of random size
-            after: afterPanel                                           // Open the new panel next to itself
-        });
-
-        panels++;
-
+        var $newpanel = $('#panels').data('Stacky').push({
+                            title: 'Title ' + identifier,
+                            id: 'panel' + identifier,
+                            navigation: {
+                                left: [
+                                    {
+                                        link: '#!',
+                                        alt: 'Open a new panel',
+                                        linkClass: 'open-panel',
+                                        iconClass: 'pe-7s-angle-right big-icon'
+                                    },
+                                    {
+                                        link: '#!',
+                                        alt: 'Open a new floating panel',
+                                        linkClass: 'open-panel open-floating-panel',
+                                        iconClass: 'pe-7s-angle-right-circle'
+                                    }
+                                ]
+                            },
+                            floating: self.hasClass('open-floating-panel'),
+                            size: sizes[getRandomInt(0, 3)],                            // Create panels of random size
+                            after: afterPanel                                           // Open the new panel next to itself
+                        });
     });
 
 });

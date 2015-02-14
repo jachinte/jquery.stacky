@@ -1,22 +1,6 @@
-// Black theme
-$main-background: #626262;
-
-$panel-header-background: #18181C;
-$panel-header-border: #000000;
-$panel-nav-border: #333333;
-$panel-nav-background-hover: #242424;
-$panel-nav-link-color: #FFFFFF;
-$panel-title-color: #FFFFFF;
-$panel-content-background: #FFFDFF;
-$panel-floatin-content-background: #333333;
-$panel-floatin-header-border: #666666;
-$panel-floatin-content-border: #DDDDDD;
-$panel-content-color: #CCCCCC;
-
-
+// 1. Color schema
 // Gray theme
 $main-background: #CCCCCC;
-
 $panel-header-background: #383838;
 $panel-header-border: rgb(40, 40, 40);
 $panel-nav-border: #484848;
@@ -28,3 +12,32 @@ $panel-floatin-content-background: #EEEEEE;
 $panel-floatin-header-border: #222222;
 $panel-floatin-content-border: #DDDDDD;
 $panel-content-color: #CDCDCD;
+
+// Black theme
+$main-background: #626262;
+$panel-header-background: #18181C;
+$panel-header-border: #000000;
+$panel-nav-border: #333333;
+$panel-nav-background-hover: #242424;
+$panel-nav-link-color: #FFFFFF;
+$panel-title-color: #FFFFFF;
+$panel-content-background: #FFFDFF;
+$panel-floatin-content-background: #EEEEEE;
+$panel-floatin-header-border: #222222;
+$panel-floatin-content-border: #DDDDDD;
+$panel-content-color: #CCCCCC;
+
+// 2. Structural values
+$panel-default-width: 400px;
+$panel-thin-width: 300px;
+$panel-medium-width: 600px;
+$panel-wide-width: 800px;
+$panel-expanded-width: 100%;
+
+$panel-header-height: 45px;
+$panel-header-li-fontsize: 15px;
+$panel-header-li-width: 50px;
+$panel-header-li-wide-width: 65px;
+$panel-header-li-icon-fontsize: 30px;
+
+$panel-header-title: 16px;

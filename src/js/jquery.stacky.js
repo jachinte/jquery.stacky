@@ -26,16 +26,16 @@
                 floating: false,
                 id: '',
                 onBeforeOpen: function($panel){
-                    // This function is called before fading in the panel
+                    // This function is called before fading in the new panel
                 },
                 onBeforeClose: function($panel){
                     /*
                      * This function is called after the panel has been hidden, and 
-                     * before removing the DOM element
+                     * before removing the corresponding DOM element
                      */
                 },
-                size: 'medium', // thin, medium, wide
-                title: ''
+                size: '', // thin, medium, wide
+                title: '' // The panel's title
             },
             texts: {
                 close: 'Close panel',
@@ -106,7 +106,7 @@
         // current instance
         var plugin = this;
 
-        var $element = $(element),  // reference to the jQuery version of DOM element
+        var $element = $(element),  // reference to the jQuery version of the DOM element
             element = element;      // reference to the actual DOM element
 
         // this holds the merged default, and user-provided options
@@ -189,6 +189,9 @@
             if($.fn.scrollTo){
                 container.scrollTo(goTo(panelSettings, panel), plugin.settings.scrollToSpeed);
             }
+
+            // Return the jQuery object
+            return panel;
         };
 
         // private methods
