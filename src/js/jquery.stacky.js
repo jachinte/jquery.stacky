@@ -6,25 +6,25 @@
     $[pluginName] = function(element, options) {
 
         var defaults = {
-            fadeInSpeed: 'fast',
-            scrollToSpeed: 400,
-            panelDefaults: {
-                after: undefined,
-                close: {
+            fadeInSpeed: 'fast',        // Speed when making the new panel visible
+            scrollToSpeed: 400,         // Speed when moving the scroll bar
+            panelDefaults: {            // All panels are created with these settings, unless they override them
+                after: undefined,       // If different than undefined, the new panel is inserted after this jQuery element
+                close: {                // Action link to close the panel
                     show: true,
                     position: 'right'
                 },
-                maximize: {
+                maximize: {             // Action link to expand and collapse the panel
                     show: true,
                     position: 'right'
                 },
-                navigation: {               
+                navigation: {           // Action links               
                     left: [],
                     right: []
                 },
-                content: '',
-                floating: false,
-                id: '',
+                content: '',            // HTML to be inserted into the panel
+                floating: false,        // Indicates if the new panel should be placed using absolute position
+                id: '',                 // id attribute of the new panel
                 onBeforeOpen: function($panel){
                     // This function is called before fading in the new panel
                 },
@@ -34,10 +34,10 @@
                      * before removing the corresponding DOM element
                      */
                 },
-                size: '', // thin, medium, wide
-                title: '' // The panel's title
+                size: '',               // thin, medium, wide
+                title: ''               // The panel's title
             },
-            texts: {
+            texts: {                    // Alternative text for action links
                 close: 'Close panel',
                 collapse: 'Collapse panel',
                 expand: 'Expand panel'
@@ -125,7 +125,11 @@
 
         // public methods
 
-        // a public method for pushing new panels
+        /**
+         * A public method for pushing new panels
+         * @param {}
+         * @returns 
+         */
         plugin.push = function(panelOptions) {
             var panelSettings = $.extend(true, {}, plugin.settings.panelDefaults, panelOptions),
                 panel = createPanelStructure(panelSettings),

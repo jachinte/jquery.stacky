@@ -1,36 +1,26 @@
-/*
- * CONTENTS
- * 
- * 1. IMPORTS
- * 2. VARIABLES
- * 3. GENERAL CONFIGURATION
- * 4. HEIGHT ISSUES
- * 5. UTIL CLASSES
- * 6. PANEL CONTAINER STYLES
- * 7. PANEL STYLES
- */
+// CONTENTS
+// 
+// 1. IMPORTS
+// 2. VARIABLES
+// 3. GENERAL CONFIGURATION
+// 4. HEIGHT ISSUES
+// 5. UTIL CLASSES
+// 6. PANEL CONTAINER STYLES
+// 7. PANEL STYLES
 
-/*
- * 1. IMPORTS
- */
+// 1. IMPORTS
 @import 'theme';
 
-/*
- * 2. VARIABLES
- */
+// 2. VARIABLES
 
-/* 
- * 3. GENERAL CONFIGURATION 
- */
+// 3. GENERAL CONFIGURATION 
 body {
     font-family: "Roboto", sans-serif;
     font-weight: normal;
-    -webkit-user-select: none; /* prevent users to select anything */
+    -webkit-user-select: none; // prevent users to select anything
 }
 
-/* 
- * 4. HEIGHT ISSUES 
- */
+// 4. HEIGHT ISSUES 
 body,
 html,
 .main,
@@ -41,6 +31,7 @@ html,
 }
 
 .panel > article {
+    height: -webkit-calc(100% - #{$panel-header-height});
     height: calc(100% - #{$panel-header-height});
 }
 
@@ -52,14 +43,7 @@ html,
     box-sizing: border-box;
 }
 
-/* 
- * 5. UTIL CLASSES 
- */
-.hidden {
-    display: none !important;
-    transition: display 1s ease;
-}
-
+// 5. UTIL CLASSES
 .left {
     float: left;
 }
@@ -74,9 +58,7 @@ html,
     text-overflow: ellipsis;
 }
 
-/* 
- * 6. PANEL CONTAINER STYLES 
- */
+// 6. PANEL CONTAINER STYLES
 .main {
     background-color: $main-background;
     margin: 0;
@@ -84,10 +66,7 @@ html,
     width: 100%;
 }
 
-/* 
- * 7. PANEL STYLES 
- */
-
+// 7. PANEL STYLES
 .panels {
     font-size: 0;
     overflow-x: auto;

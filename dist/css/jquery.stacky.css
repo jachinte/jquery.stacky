@@ -1,33 +1,9 @@
-/*
- * CONTENTS
- * 
- * 1. IMPORTS
- * 2. VARIABLES
- * 3. GENERAL CONFIGURATION
- * 4. HEIGHT ISSUES
- * 5. UTIL CLASSES
- * 6. PANEL CONTAINER STYLES
- * 7. PANEL STYLES
- */
-/*
- * 1. IMPORTS
- */
-/*
- * 2. VARIABLES
- */
-/* 
- * 3. GENERAL CONFIGURATION 
- */
 body {
   font-family: "Roboto", sans-serif;
   font-weight: normal;
   -webkit-user-select: none;
-  /* prevent users to select anything */
 }
 
-/* 
- * 4. HEIGHT ISSUES 
- */
 body,
 html,
 .main,
@@ -38,6 +14,7 @@ html,
 }
 
 .panel > article {
+  height: -webkit-calc(100% - 45px);
   height: calc(100% - 45px);
 }
 
@@ -47,14 +24,6 @@ html,
 .panel > header,
 .panel > article {
   box-sizing: border-box;
-}
-
-/* 
- * 5. UTIL CLASSES 
- */
-.hidden {
-  display: none !important;
-  transition: display 1s ease;
 }
 
 .left {
@@ -71,9 +40,6 @@ html,
   text-overflow: ellipsis;
 }
 
-/* 
- * 6. PANEL CONTAINER STYLES 
- */
 .main {
   background-color: #626262;
   margin: 0;
@@ -81,9 +47,6 @@ html,
   width: 100%;
 }
 
-/* 
- * 7. PANEL STYLES 
- */
 .panels {
   font-size: 0;
   overflow-x: auto;
@@ -233,5 +196,3 @@ html,
 .panel > header nav.wide li {
   width: 65px;
 }
-
-/*# sourceMappingURL=jquery.stacky.css.map */
