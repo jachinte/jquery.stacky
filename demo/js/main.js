@@ -12,6 +12,22 @@ $(document).ready(function(){
         fadeInSpeed: 'fast',
         scrollToSpeed: 300,
         panelDefaults: {
+            navigation: {
+                left: [
+                    {
+                        link: '#!',
+                        alt: 'Open a new panel',
+                        linkClass: 'open-panel',
+                        iconClass: 'pe-7s-angle-right big-icon'
+                    },
+                    {
+                        link: '#!',
+                        alt: 'Open a new floating panel',
+                        linkClass: 'open-panel open-floating-panel',
+                        iconClass: 'pe-7s-angle-right-circle'
+                    }
+                ]
+            },
             onBeforeOpen: function($panel){
                 console.log('About to be shown', $panel);
             },
@@ -35,25 +51,9 @@ $(document).ready(function(){
         var $newpanel = $('#panels').data('Stacky').push({
                             title: 'Title ' + identifier,
                             id: 'panel' + identifier,
-                            navigation: {
-                                left: [
-                                    {
-                                        link: '#!',
-                                        alt: 'Open a new panel',
-                                        linkClass: 'open-panel',
-                                        iconClass: 'pe-7s-angle-right big-icon'
-                                    },
-                                    {
-                                        link: '#!',
-                                        alt: 'Open a new floating panel',
-                                        linkClass: 'open-panel open-floating-panel',
-                                        iconClass: 'pe-7s-angle-right-circle'
-                                    }
-                                ]
-                            },
                             floating: self.hasClass('open-floating-panel'),
-                            size: sizes[getRandomInt(0, 3)],                            // Create panels of random size
-                            after: afterPanel                                           // Open the new panel next to itself
+                            size: sizes[getRandomInt(0, 3)],    // Create panels of random size
+                            after: afterPanel                   // Open the new panel next to itself
                         });
     });
 
