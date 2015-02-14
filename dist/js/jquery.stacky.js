@@ -30,6 +30,15 @@
                 content: '',
                 floating: false,
                 id: '',
+                onBeforeOpen: function($panel){
+                    // This function is called before fading in the panel
+                },
+                onBeforeClose: function($panel){
+                    /*
+                     * This function is called after the panel has been hidden, and 
+                     * before removing the DOM element
+                     */
+                },
                 size: 'medium', // thin, medium, wide
                 title: ''
             },
@@ -161,7 +170,7 @@
             // close panel
             container.not('.' + classes.closeClickBound)
                 .addClass(classes.closeClickBound)
-                .on('click', '.' + classes.close, { self: plugin }, closePanel);
+                .on('click', '.' + classes.close, { self: plugin, panelSettings: panelSettings }, closePanel);
 
             // expand panel
             container.not('.' + classes.expandClickBound)
@@ -172,6 +181,12 @@
             container.not('.' + classes.collapseClickBound)
                 .addClass(classes.collapseClickBound)
                 .on('click', '.' + classes.collapse, { self: plugin }, collapsePanel);
+
+            // If there is a callback, it is executed
+            if(panelSettings.onBeforeOpen 
+                && typeof panelSettings.onBeforeOpen === 'function'){
+                panelSettings.onBeforeOpen(panel);
+            }
 
             // Finally, show the recently created panel
             panel.fadeIn(plugin.settings.fadeInSpeed);
@@ -310,9 +325,19 @@
          */
         var closePanel = function (event) {
             var self = event.data.self,
+                panelSettings = event.data.panelSettings,
                 panel = $(this).closest('.' + classes.panel),
                 hasShadow = panel.hasClass(classes.active),
                 index = $element.find('.' + classes.panel).index(panel);
+
+            // Hide the panel
+            panel.hide();
+
+            // If there is a callback, it is executed
+            if(panelSettings.onBeforeClose 
+                && typeof panelSettings.onBeforeClose === 'function'){
+                panelSettings.onBeforeClose(panel);
+            }
 
             // Remove the panel from the panels array
             plugin.panels.splice(index, 1);

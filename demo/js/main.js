@@ -11,13 +11,22 @@ $(document).ready(function(){
 
     $('#panels').Stacky({
         fadeInSpeed: 'fast',
-        scrollToSpeed: 300
+        scrollToSpeed: 300,
+        panelDefaults: {
+            onBeforeOpen: function($panel){
+                console.log('About to be shown', $panel);
+            },
+            onBeforeClose: function($panel){
+                console.log('Recently hidden, and about to be removed', $panel);
+            }
+        }
     });
 
     // Binds click to reate new panels
     $("body").on('click', ".open-panel", function(){
         
-        var afterPanel = $(this).closest('.panel');
+        var self = $(this),
+            afterPanel = self.closest('.panel');
 
         if(afterPanel.length == 0){
             afterPanel = undefined;
@@ -33,12 +42,18 @@ $(document).ready(function(){
                         alt: 'Open a new panel',
                         linkClass: 'open-panel',
                         iconClass: 'pe-7s-angle-right big-icon'
+                    },
+                    {
+                        link: '#!',
+                        alt: 'Open a new floating panel',
+                        linkClass: 'open-panel open-floating-panel',
+                        iconClass: 'pe-7s-angle-right-circle'
                     }
                 ]
             },
-            // floating: getRandomInt(0, 2) === 0 ? true : false,
+            floating: self.hasClass('open-floating-panel'),
             size: sizes[getRandomInt(0, 3)],                            // Create panels of random size
-            after: getRandomInt(0, 2) === 0 ? afterPanel : undefined    // Open the new panel next to itself or at the end (randome choice)
+            after: afterPanel                                           // Open the new panel next to itself
         });
 
         panels++;
