@@ -114,7 +114,7 @@ It's called before fading in the new panel.
 __onBeforeClose__: function ( $panel )
 It's called before hiding and removing the panel. To indicate that the panel must remain opened, a false value should be returned.
 
-__size__: <empty> | 'thin' | 'medium' | 'wide'    
+__size__: '' | 'thin' | 'medium' | 'wide'    
 The size of the new panel. 
 
 __title__: string    
