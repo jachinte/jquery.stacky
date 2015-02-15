@@ -1,21 +1,26 @@
 module.exports = function(grunt) {
 
+    var banner = '/*!\n' +
+                ' * <%= pkg.name %>\n' +
+                ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %> - <%= pkg.author.email %> | <%= pkg.author.web %>\n' +
+                ' * Licensed under the MIT license.\n' +
+                ' * <%= pkg.repository.url %>\n' +
+                ' * @projectDescription <%= pkg.description %>\n' +
+                ' * @author <%= pkg.author.name %>\n' +
+                ' * @version v<%= pkg.version %>\n' +
+                ' */\n';
+
     grunt.initConfig({
 
         pkg: grunt.file.readJSON('package.json'),
 
         concat: {
           options: {
-            banner: '/*\n* <%= pkg.name %> - v<%= pkg.version %> (<%= grunt.template.today("yyyy-mm-dd") %>)\n' +
-                '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-                '*\n' +
-                '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %> - <%= pkg.author.web %>\n' +
-                '* Licensed under the MIT license.\n' +
-                '*/\n'
+            banner: banner
           }, 
           build: {
             src: ['src/js/jquery.stacky.js'],
-            dest: 'dist/js/<%= pkg.name %>-<%= pkg.version %>.js'
+            dest: 'dist/js/<%= pkg.name %>.js'
           }
         },
 
@@ -30,16 +35,11 @@ module.exports = function(grunt) {
         // configure uglify to minify js files
         uglify: {
           options: {
-            banner: '/*\n* <%= pkg.name %> - v<%= pkg.version %> (<%= grunt.template.today("yyyy-mm-dd") %>)\n' +
-                '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-                '*\n' +
-                '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %> - <%= pkg.author.web %>\n' +
-                '* Licensed under the MIT license.\n' +
-                '*/\n'
+            banner: banner
           },
           build: {
             files: {
-              'dist/js/<%= pkg.name %>-<%= pkg.version %>.min.js': 'dist/js/<%= pkg.name %>-<%= pkg.version %>.js'
+              'dist/js/<%= pkg.name %>.min.js': 'dist/js/<%= pkg.name %>.js'
             }
           }
         },
