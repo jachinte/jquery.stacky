@@ -1,11 +1,21 @@
-/*
-* jquery.stacky - v0.1.0 (2015-02-14)
-* https://github.com/jachinte/jquery.stacky/
-*
-* Copyright (c) 2015 Miguel A. Jiménez - http://migueljimenez.co
-* Licensed under the MIT license.
-*/
-;(function ($, window, document, undefined) {
+/*!
+ * jquery.stacky
+ * Copyright (c) 2015 Miguel A. Jiménez - migueljimenezachinte<a>gmail<d>com | http://migueljimenez.co
+ * Licensed under the MIT license.
+ * https://github.com/jachinte/jquery.stacky
+ * @projectDescription Stacky is a jQuery plugin that gives you the ability to open panels horizontally, as you need them.
+ * @author Miguel A. Jiménez
+ * @version v0.1.0
+ */
+;(function (factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['jquery'], factory);
+    } else {
+        // Browser globals
+        factory(jQuery);
+    }
+}(function ($) {
     'use strict';
 
     var pluginName = 'Stacky';
@@ -417,4 +427,4 @@
         });
     };
     
-})(jQuery, window, document);
+}));

@@ -2,12 +2,10 @@ $(document).ready(function(){
     'use strict';
 
     var sizes = ['thin', 'medium', 'wide'];
-
     // Returns a random integer between min (included) and max (excluded)
     function getRandomInt(min, max) {
       return Math.floor(Math.random() * (max - min)) + min;
     };
-
     $('#panels').Stacky({
         fadeInSpeed: 'fast',
         scrollToSpeed: 600,
@@ -36,10 +34,8 @@ $(document).ready(function(){
             }
         }
     });
-
     // Binds click to reate new panels
     $("body").on('click', ".open-panel", function(){
-        
         var self = $(this),
             afterPanel = self.closest('.panel'),
             identifier = getRandomInt(0, 1000);
