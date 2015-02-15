@@ -26,6 +26,10 @@ var options = { ... };
 $( '#container' ).data( 'Stacky' ).push( options );
 ```
 
+#### AMD
+
+Stacky can also be used with [require.js](http://requirejs.org/). You can find an example in [demo/basic-requirejs.html](demo/basic-requirejs.html).
+
 ## Options
 
 There are two types of options, depending on where you use them, either in the plugin initialization or when pushing in a new panel.
