@@ -126,7 +126,12 @@ The panel's title.
 
 ## Theming
 
-In the source folder you can find two `.sass` files, one for the general structure and another for colors, borders, sizes, etc. named *theme.scss*.
+In [src/sass](/src/sass) there are two default themes: white and black; you can modify the sass variables to vary the visual appeareance of the panels. Note that if you modify the variables you have to run grunt again to compile the css files.
+
+To add more themes, just (i) create a new `.scss` file containing the defined variables, and (ii) change the import statement in [`styles.scss`](src/sass/styles.scss) to point to the new file.
+
+![Black theme](https://cloud.githubusercontent.com/assets/1284036/6249773/6e048c84-b757-11e4-8298-bcbb0f16be12.png)
+![White theme](https://cloud.githubusercontent.com/assets/1284036/6249774/6e0854ae-b757-11e4-81a9-7b89d6bdbb9b.png)
 
 ## Contributing
 
