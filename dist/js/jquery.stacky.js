@@ -339,7 +339,7 @@
             $('.' + classes.panel + '[data-after-panel=' + panel.attr('id') + ']')
                 .removeAttr('data-after-panel')
                 .css('left', '0px')
-                .find(classes.close).trigger('click');
+                .find('.' + classes.close).trigger('click');
 
             // Hide the panel
             panel.hide();
