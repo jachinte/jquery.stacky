@@ -130,6 +130,9 @@ In [src/sass](/src/sass) there are two default themes: white and black; you can 
 
 To add more themes, just (i) create a new `.scss` file containing the defined variables, and (ii) change the import statement in [`styles.scss`](src/sass/styles.scss) to point to the new file.
 
+![Black theme](https://cloud.githubusercontent.com/assets/1284036/6249773/6e048c84-b757-11e4-8298-bcbb0f16be12.png)
+![White theme](https://cloud.githubusercontent.com/assets/1284036/6249774/6e0854ae-b757-11e4-81a9-7b89d6bdbb9b.png)
+
 ## Contributing
 
 You are invited to contribute code and suggestions to this project. The more the merrier.
