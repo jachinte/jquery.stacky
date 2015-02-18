@@ -1,7 +1,6 @@
 body {
   font-family: "Roboto", sans-serif;
   font-weight: normal;
-  -webkit-user-select: none;
 }
 
 body,
@@ -41,7 +40,7 @@ html,
 }
 
 .main {
-  background-color: #626262;
+  background-color: transparent;
   margin: 0;
   overflow-x: auto;
   width: 100%;
@@ -60,6 +59,7 @@ html,
 }
 
 .panel {
+  background: #FFFFFF;
   display: inline-block;
   position: relative;
   width: 400px;
@@ -97,23 +97,37 @@ html,
   width: 11px;
 }
 .panel.floating {
+  background: #F9F9F9;
   position: absolute;
   z-index: 999 !important;
 }
 .panel.floating > header {
-  border-color: #222222;
+  background: transparent;
+  border-color: #DDDDDD;
   border-width: 0 1px 0 1px;
   border-style: solid;
 }
+.panel.floating > header nav li {
+  border-color: transparent;
+}
+.panel.floating > header nav li:hover {
+  background-color: #F0F0F0;
+}
+.panel.floating > header nav li a {
+  color: #000000;
+}
+.panel.floating > header h1 {
+  color: #000000;
+}
 .panel.floating > article {
-  background-color: #EEEEEE;
+  background-color: transparent;
   border-color: #DDDDDD;
   border-width: 0 1px 0 1px;
   border-style: solid;
 }
 .panel > header {
-  background-color: #18181C;
-  border-color: #000000;
+  background-color: transparent;
+  border-color: #CCCCCC;
   border-style: solid;
   border-width: 0 0 0 1px;
   height: 45px;
@@ -134,7 +148,7 @@ html,
   position: relative;
 }
 .panel > header nav ul li {
-  border-color: #333333;
+  border-color: transparent;
   border-width: 0 1px 0 1px;
   border-style: solid;
   box-sizing: border-box;
@@ -146,14 +160,14 @@ html,
   width: 50px;
 }
 .panel > header nav ul li:hover {
-  background-color: #242424;
+  background-color: #F7F7F7;
 }
 .panel > header nav ul li:nth-child(2n) {
   border-left-color: transparent !important;
 }
 .panel > header nav ul li a {
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: #000000;
   cursor: pointer;
   display: inline-block;
   height: 45px;
@@ -170,7 +184,7 @@ html,
   font-size: 45px;
 }
 .panel > header h1 {
-  color: #FFFFFF;
+  color: #000000;
   display: inline-block;
   font-size: 16px;
   font-weight: 300;
@@ -181,7 +195,7 @@ html,
   width: 45%;
 }
 .panel > article {
-  background-color: #FFFDFF;
+  background-color: transparent;
   border-color: #CCCCCC;
   border-style: solid;
   border-width: 0 0 0 1px;

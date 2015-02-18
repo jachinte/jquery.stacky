@@ -9,7 +9,7 @@
 // 7. PANEL STYLES
 
 // 1. IMPORTS
-@import 'theme';
+@import 'theme-white';
 
 // 2. VARIABLES
 
@@ -17,7 +17,6 @@
 body {
     font-family: "Roboto", sans-serif;
     font-weight: normal;
-    -webkit-user-select: none; // prevent users to select anything
 }
 
 // 4. HEIGHT ISSUES 
@@ -83,6 +82,7 @@ html,
 }
 
 .panel {
+    background: $panel-background;
     display: inline-block;
     position: relative;
     width: $panel-default-width;
@@ -128,18 +128,38 @@ html,
     }
 
     &.floating {
+        background: $panel-floating-background;
         position: absolute;
         z-index: 999 !important;
 
         > header {
-            border-color: $panel-floatin-header-border;
+            background: $panel-floating-header-background;
+            border-color: $panel-floating-header-border;
             border-width: 0 1px 0 1px;
             border-style: solid;
+
+            nav {
+                li {
+                    border-color: $panel-floating-nav-border;
+
+                    &:hover {
+                        background-color: $panel-floating-nav-background-hover;
+                    }
+
+                    a {
+                        color: $panel-floating-nav-link-color;
+                    }
+                }
+            }
+
+            h1 {
+                color: $panel-floating-title-color;
+            }
         }
 
         > article {
-            background-color: $panel-floatin-content-background;
-            border-color: $panel-floatin-content-border;
+            background-color: $panel-floating-content-background;
+            border-color: $panel-floating-content-border;
             border-width: 0 1px 0 1px;
             border-style: solid;
         }
@@ -227,7 +247,7 @@ html,
 
     > article {
         background-color: $panel-content-background;
-        border-color: $panel-content-color;
+        border-color: $panel-content-border;
         border-style: solid;
         border-width: 0 0 0 1px;
         margin: 0;

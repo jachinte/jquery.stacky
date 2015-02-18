@@ -1,0 +1,36 @@
+// 1. COLOR SCHEME
+$main-background: transparent;
+
+$panel-background: #FFFFFF;
+$panel-header-background: transparent;
+$panel-header-border: #CCCCCC;
+$panel-nav-border: transparent;
+$panel-nav-background-hover: #F7F7F7;
+$panel-nav-link-color: #000000;
+$panel-title-color: #000000;
+$panel-content-background: transparent;
+$panel-content-border: #CCCCCC;
+
+$panel-floating-background: #F9F9F9;
+$panel-floating-header-background: transparent;
+$panel-floating-header-border: #DDDDDD;
+$panel-floating-nav-border: transparent;
+$panel-floating-nav-background-hover: #F0F0F0;
+$panel-floating-nav-link-color: #000000;
+$panel-floating-title-color: #000000;
+$panel-floating-content-background: transparent;
+$panel-floating-content-border: #DDDDDD;
+
+// 2. STRUCTURAL VALUES
+$panel-default-width: 400px;
+$panel-thin-width: 300px;
+$panel-medium-width: 600px;
+$panel-wide-width: 800px;
+$panel-expanded-width: 100%;
+
+$panel-header-height: 45px;
+$panel-header-li-fontsize: 15px;
+$panel-header-li-width: 50px;
+$panel-header-li-wide-width: 65px;
+$panel-header-li-icon-fontsize: 30px;
+$panel-header-title: 16px;
