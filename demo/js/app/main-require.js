@@ -4,10 +4,12 @@ define(["jquery", "jquery.stacky"], function($) {
         'use strict';
         
         var sizes = ['thin', 'medium', 'wide'];
+        
         // Returns a random integer between min (included) and max (excluded)
         function getRandomInt(min, max) {
           return Math.floor(Math.random() * (max - min)) + min;
         };
+
         $('#panels').Stacky({
             fadeInSpeed: 'fast',
             scrollToSpeed: 600,
@@ -36,6 +38,7 @@ define(["jquery", "jquery.stacky"], function($) {
                 }
             }
         });
+
         // Binds click to reate new panels
         $("body").on('click', ".open-panel", function(){
             var self = $(this),
@@ -51,7 +54,7 @@ define(["jquery", "jquery.stacky"], function($) {
                                 id: 'panel' + identifier,
                                 floating: self.hasClass('open-floating-panel'),
                                 size: sizes[getRandomInt(0, 3)],    // Create panels of random size
-                                after: afterPanel                   // Open the new panel next to itself
+                                after: afterPanel
                             });
         });
 

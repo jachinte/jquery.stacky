@@ -58,22 +58,10 @@
         var classes = {
             // Used to indicate the latest added panel
             active: 'active',
-            /*
-             * It is added to the panel container the first time a panel is appended,
-             * to indicate that the click event for closing panels has been already 
-             * bound
-             */
-            closeClickBound: 'close-bound',
             // Used to bind the close action (closing a panel) to a DOM element
             close: 'close',
             // The default close icon
             closeIcon: 'pe-7s-close',
-            /*
-             * It is added to the panel container the first time a panel is appended,
-             * to indicate that the click event for collapsing panels (once they have
-             * been extended) has been already bound
-             */
-            collapseClickBound: 'collapse-bound',
             /* 
              * Used to bind the collapse action (returning a panel to its initial width)
              * to a DOM element
@@ -85,12 +73,6 @@
             content: 'content',
             // Truncates large titles
             ellipsis: 'ellipsis',
-            /*
-             * It is added to the panel container the first time a panel is appended,
-             * to indicate that the click event for expanding panels has been already 
-             * bound
-             */
-            expandClickBound: 'expand-bound',
             /*
              * Used to bind the expand action (making a panel to fill its container's
              * width) to a DOM element
@@ -149,6 +131,14 @@
                 panel = createPanelStructure(panelSettings),
                 container = $element;
 
+            if(typeof panelOptions.onBeforeClose === 'function'){
+                panelSettings.onBeforeClose = panelOptions.onBeforeClose;
+            }
+
+            if(typeof panelOptions.onBeforeOpen === 'function'){
+                panelSettings.onBeforeOpen = panelOptions.onBeforeOpen;
+            }
+
             // As this is the latest panel, show left and right shadow
             panel.addClass(classes.active);
             panel.css('display', 'none').css('z-index', '' + (plugin.panels.length + 1));
@@ -181,19 +171,13 @@
 
             // Bind click events
             // close panel
-            container.not('.' + classes.closeClickBound)
-                .addClass(classes.closeClickBound)
-                .on('click', '.' + classes.close, { self: plugin, panelSettings: panelSettings }, closePanel);
+            panel.on('click', '.' + classes.close, { self: plugin, callback: panelSettings.onBeforeClose }, closePanel);
 
             // expand panel
-            container.not('.' + classes.expandClickBound)
-                .addClass(classes.expandClickBound)
-                .on('click', '.' + classes.expand, { self: plugin }, expandPanel);
+            panel.on('click', '.' + classes.expand, { self: plugin }, expandPanel);
 
             // collapse panel
-            container.not('.' + classes.collapseClickBound)
-                .addClass(classes.collapseClickBound)
-                .on('click', '.' + classes.collapse, { self: plugin }, collapsePanel);
+            panel.on('click', '.' + classes.collapse, { self: plugin }, collapsePanel);
 
             // If there is a callback, execute it!
             if(panelSettings.onBeforeOpen 
@@ -246,16 +230,16 @@
 
             if(panelSettings.floating === true){
                 panel.addClass(classes.floating);
-                var leftOffset = 0;
+                var _leftOffset = 0;
 
                 if(panelSettings.after !== undefined){
-                    var afterElemIndex = $element.find('.' + classes.panel).index(panelSettings.after);
+                    // When the panelSettings.after panel is closed, this floating panel should be closed too
+                    panel.attr('data-after-panel', panelSettings.after.attr('id'));
 
-                    for(var i = 0; i < plugin.panels.length && i <= afterElemIndex; i++){
-                        leftOffset += plugin.panels[i].outerWidth();
-                    }
+                    // position of panelSettings.after panel
+                    _leftOffset = leftOffset(panelSettings.after);
                 }
-                panel.css('left', leftOffset + 'px');
+                panel.css('left', _leftOffset + 'px');
             }
 
             return panel;
@@ -337,19 +321,25 @@
          */
         var closePanel = function (event) {
             var self = event.data.self,
-                panelSettings = event.data.panelSettings,
+                callback = event.data.callback,
                 panel = $(this).closest('.' + classes.panel),
                 hasShadow = panel.hasClass(classes.active),
                 index = $element.find('.' + classes.panel).index(panel);
 
             // If there is a callback, execute it!
-            if(typeof panelSettings.onBeforeClose === 'function'){
+            if(typeof callback === 'function'){
                 // If a false value is returned by the callback, the panel must remain opened
-                if(panelSettings.onBeforeClose(panel) === false){
+                if(callback(panel) === false){
                     event.preventDefault();
                     return;
                 }
             }
+
+            // Update all panels depending on this one, and trigger its close event
+            $('.' + classes.panel + '[data-after-panel=' + panel.attr('id') + ']')
+                .removeAttr('data-after-panel')
+                .css('left', '0px')
+                .find(classes.close).trigger('click');
 
             // Hide the panel
             panel.hide();
