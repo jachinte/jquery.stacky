@@ -119,16 +119,16 @@
          */
         plugin.push = function(panelOptions) {
             var panelSettings = $.extend(true, {}, plugin.settings.panelDefaults, panelOptions),
-                panel = createPanelStructure(panelSettings),
                 container = $element;
 
-            if(typeof panelOptions.onBeforeClose === 'function'){
-                panelSettings.onBeforeClose = panelOptions.onBeforeClose;
+            // Replace specific values in panelSettings (not done by $.extend)
+            for(var prop in panelOptions){
+                if(panelOptions.hasOwnProperty(prop)){
+                    panelSettings[prop] = panelOptions[prop];
+                }
             }
 
-            if(typeof panelOptions.onBeforeOpen === 'function'){
-                panelSettings.onBeforeOpen = panelOptions.onBeforeOpen;
-            }
+            var panel = createPanelStructure(panelSettings);
 
             // As this is the latest panel, show left and right shadow
             panel.addClass(classes.active);
