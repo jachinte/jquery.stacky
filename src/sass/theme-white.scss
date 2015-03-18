@@ -2,35 +2,35 @@
 $main-background: transparent;
 
 $panel-background: #FFFFFF;
-$panel-header-background: transparent;
-$panel-header-border: #CCCCCC;
-$panel-nav-border: transparent;
+$panel-header-background: rgb(236, 236, 236);
+$panel-header-border: #DFDFDF;
+$panel-nav-border: #EEEEEE;
 $panel-nav-background-hover: #F7F7F7;
-$panel-nav-link-color: #000000;
+$panel-nav-link-color: #999999;
 $panel-title-color: #000000;
 $panel-content-background: transparent;
-$panel-content-border: #CCCCCC;
+$panel-content-border: #DFDFDF;
 
-$panel-floating-background: #F9F9F9;
-$panel-floating-header-background: transparent;
-$panel-floating-header-border: #DDDDDD;
-$panel-floating-nav-border: transparent;
-$panel-floating-nav-background-hover: #F0F0F0;
-$panel-floating-nav-link-color: #000000;
-$panel-floating-title-color: #000000;
+$panel-floating-background: #FFFFFF;
+$panel-floating-header-background: #3A3A3A;
+$panel-floating-header-border: #DFDFDF;
+$panel-floating-nav-border: #4F4F4F;
+$panel-floating-nav-background-hover: #222222; // #D83939
+$panel-floating-nav-link-color: #FFFFFF;
+$panel-floating-title-color: #FFFFFF;
 $panel-floating-content-background: transparent;
-$panel-floating-content-border: #DDDDDD;
+$panel-floating-content-border: #DFDFDF;
 
 // 2. STRUCTURAL VALUES
 $panel-default-width: 400px;
-$panel-thin-width: 300px;
-$panel-medium-width: 600px;
-$panel-wide-width: 800px;
-$panel-expanded-width: 100%;
+$panel-thin-width: 350px;
+$panel-medium-width: 500px;
+$panel-wide-width: 700px;
+$panel-expanded-width: calc(100% - );
 
-$panel-header-height: 45px;
+$panel-header-height: 32px;
 $panel-header-li-fontsize: 15px;
-$panel-header-li-width: 50px;
-$panel-header-li-wide-width: 65px;
-$panel-header-li-icon-fontsize: 30px;
-$panel-header-title: 16px;
+$panel-header-li-width: 40px;
+$panel-header-li-wide-width: 50px;
+$panel-header-li-icon-fontsize: 25px;
+$panel-header-title: 13px;
