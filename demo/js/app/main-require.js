@@ -10,31 +10,33 @@ define(["jquery", "jquery.stacky"], function($) {
           return Math.floor(Math.random() * (max - min)) + min;
         };
 
-        $('#panels').Stacky({
+        // Initialize the Stacky plugin
+        var stackyContainer = $('#panels').Stacky({
             fadeInSpeed: 'fast',
             scrollToSpeed: 600,
             panelDefaults: {
+                content: '',
                 navigation: {
                     left: [
                         {
                             link: '#!',
                             alt: 'Open a new panel',
                             linkClass: 'open-panel',
-                            iconClass: 'pe-7s-angle-right big-icon'
+                            iconClass: 'fa fa-folder-open-o'
                         },
                         {
                             link: '#!',
                             alt: 'Open a new floating panel',
                             linkClass: 'open-panel open-floating-panel',
-                            iconClass: 'pe-7s-angle-right-circle'
+                            iconClass: 'fa fa-folder-open'
                         }
                     ]
                 },
                 onBeforeOpen: function($panel){
-                    console.log('About to be shown', $panel);
+                    console.log('Pushing', $panel);
                 },
                 onBeforeClose: function($panel){
-                    console.log('About to be removed', $panel);
+                    console.log('Removed', $panel);
                 }
             }
         });
@@ -43,19 +45,20 @@ define(["jquery", "jquery.stacky"], function($) {
         $("body").on('click', ".open-panel", function(){
             var self = $(this),
                 afterPanel = self.closest('.panel'),
+                isFloating = self.hasClass('open-floating-panel'),
                 identifier = getRandomInt(0, 1000);
 
             if(afterPanel.length == 0){
                 afterPanel = undefined;
             }
             
-            var $newpanel = $('#panels').data('Stacky').push({
-                                title: 'Title ' + identifier,
-                                id: 'panel' + identifier,
-                                floating: self.hasClass('open-floating-panel'),
-                                size: sizes[getRandomInt(0, 3)],    // Create panels of random size
-                                after: afterPanel
-                            });
+            var $panel = stackyContainer.data('Stacky').push({
+                title: 'Panel ' + identifier,
+                id: 'panel-' + identifier,
+                floating: isFloating,
+                size: sizes[getRandomInt(0, 3)],    // Create panels of random size
+                after: isFloating ? afterPanel : undefined
+            });
         });
 
     });
