@@ -270,7 +270,7 @@
                     }
                 }
 
-                // Update all panels depending on this one, and trigger its close event
+                // Update all panels depending on this one, and trigger their close event
                 $('.' + classes.panel + '[data-after-panel=' + panel.attr('id') + ']')
                     .removeAttr('data-after-panel')
                     .css('left', '0px')
