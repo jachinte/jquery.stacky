@@ -1,0 +1,26 @@
+.panel {
+    background: #FAFAFA;
+    border-right: 1px solid #DDDDDD;
+    width: 400px;
+
+    &.wide {
+        width: 700px;
+    }
+
+    &.medium {
+        width: 500px;
+    }
+
+    &.thin {
+        width: 350px;
+    }
+
+    &.expanded {
+        width: 100%;
+    }
+
+    &.floating {
+        background: #EEEEEE;
+        border-right: 1px solid #CCCCCC;
+    }
+}
