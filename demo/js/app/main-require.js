@@ -41,8 +41,8 @@ define(["jquery", "jquery.stacky"], function($) {
             }
         });
 
-        // Binds click to reate new panels
-        $("body").on('click', ".open-panel", function(){
+        // Binds click to create new panels
+        $(document).on('click', ".open-panel", function(){
             var self = $(this),
                 afterPanel = self.closest('.panel'),
                 isFloating = self.hasClass('open-floating-panel'),

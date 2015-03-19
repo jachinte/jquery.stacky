@@ -17,13 +17,13 @@ $(document).ready(function(){
             navigation: {
                 left: [
                     {
-                        link: '#!',
+                        link: '#',
                         alt: 'Open a new panel',
                         linkClass: 'open-panel',
                         iconClass: 'fa fa-folder-open-o'
                     },
                     {
-                        link: '#!',
+                        link: '#',
                         alt: 'Open a new floating panel',
                         linkClass: 'open-panel open-floating-panel',
                         iconClass: 'fa fa-folder-open'
@@ -39,8 +39,8 @@ $(document).ready(function(){
         }
     });
 
-    // Binds click to reate new panels
-    $("body").on('click', ".open-panel", function(){
+    // Binds click to create new panels
+    $(document).on('click', ".open-panel", function(){
         var self = $(this),
             afterPanel = self.closest('.panel'),
             isFloating = self.hasClass('open-floating-panel'),

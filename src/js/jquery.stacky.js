@@ -46,6 +46,7 @@
                     expand: 'Expand panel'
                 }
             },
+
             classes = {
                 // Used to indicate the latest added panel
                 active: 'active',
@@ -148,7 +149,7 @@
                         || panelSettings.maximize.position === 'right')) {
 
                     panelSettings.navigation[panelSettings.maximize.position].push({
-                        link: '',
+                        link: '#',
                         alt: plugin.settings.texts.expand,
                         linkClass: classes.expand,
                         iconClass: classes.expandIcon
@@ -161,7 +162,7 @@
                         || panelSettings.close.position === 'right')) {
 
                     panelSettings.navigation[panelSettings.close.position].push({
-                        link: '',
+                        link: '#',
                         alt: plugin.settings.texts.close,
                         linkClass: classes.close,
                         iconClass: classes.closeIcon
@@ -247,7 +248,7 @@
             closePanel = function (event) {
                 var self = event.data.self,
                     callback = event.data.callback,
-                    panel = $(this).closest('.' + classes.panel),
+                    panel = event.data.panel,
                     hasShadow = panel.hasClass(classes.active),
                     index = $element.find('.' + classes.panel).index(panel);
 
@@ -287,7 +288,7 @@
              */
             expandPanel = function (event) {
                 var self = event.data.self,
-                    panel = $(this).closest('.' + classes.panel);
+                    panel = event.data.panel;
 
                 $(this)
                     .removeClass(classes.expand)
@@ -308,7 +309,7 @@
              */
             collapsePanel = function (event) {
                 var self = event.data.self,
-                    panel = $(this).closest('.' + classes.panel);
+                    panel = event.data.panel;
 
                 $(this)
                     .removeClass(classes.collapse)
@@ -328,8 +329,6 @@
 
         /**
          * A public method for pushing new panels
-         * @param {}
-         * @returns
          */
         plugin.push = function (panelOptions) {
             var panelSettings = $.extend(true, {}, plugin.settings.panelDefaults, panelOptions),
@@ -381,19 +380,19 @@
                     container.append(panel);
                 }
 
-                // Store new panel in the panels array
+                // Store the new panel in the panels array
                 plugin.panels.push(panel);
             }
 
             // Bind click events
             // close panel
-            panel.on('click', '.' + classes.close, { self: plugin, callback: panelSettings.onBeforeClose }, closePanel);
+            panel.on('click', '.' + classes.close, { self: plugin, callback: panelSettings.onBeforeClose, panel: panel }, closePanel);
 
             // expand panel
-            panel.on('click', '.' + classes.expand, { self: plugin }, expandPanel);
+            panel.on('click', '.' + classes.expand, { self: plugin, panel: panel }, expandPanel);
 
             // collapse panel
-            panel.on('click', '.' + classes.collapse, { self: plugin }, collapsePanel);
+            panel.on('click', '.' + classes.collapse, { self: plugin, panel: panel }, collapsePanel);
 
             // If there is a callback, execute it!
             if(panelSettings.onBeforeOpen
