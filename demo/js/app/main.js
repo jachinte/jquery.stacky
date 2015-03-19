@@ -34,11 +34,7 @@ $(document).ready(function(){
                 console.log('Pushing', $panel);
             },
             onBeforeClose: function($panel){
-                if(confirm("Closing a panel causes all floating panels depending on ti to trigger their close event. Do you want to continue?")){
-                    console.log('Removed', $panel);
-                }else{
-                    return false;
-                }
+                console.log('Removed', $panel);
             }
         }
     });
