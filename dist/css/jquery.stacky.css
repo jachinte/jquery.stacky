@@ -1,7 +1,6 @@
 .panel {
   background: #FAFAFA;
   border-right: 1px solid #DDDDDD;
-  width: 400px;
 }
 .panel.wide {
   width: 700px;

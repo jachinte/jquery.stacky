@@ -236,7 +236,7 @@
             var panel = _createPanelStructure(panelSettings),
                 zindex = (plugin.panels.length + 1) + '';
 
-            if(panelOptions.floating === true){
+            if((typeof panelOptions !== 'undefined') && panelOptions.floating === true){
                 zindex = '10' + zindex;
             }
 
