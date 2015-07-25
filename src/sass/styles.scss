@@ -1,35 +1,39 @@
-@import 'theme';
-
 body,
 html,
 .panels,
 .panel {
+    width: auto; 
     height: 100%;
 }
 
 .panels {
+    // Remove horizontal space between inline-block elements
+    font-size: 0;
+
     overflow-x: auto;
     position: relative;
     white-space: nowrap;
     width: auto;
 }
 
-@-webkit-keyframes active-keyframes {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
+@-webkit-keyframes active {
+    0%   { opacity: 1 }
+    100% { opacity: 0 }
 }
 
-@keyframes active-keyframes {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
+@-moz-keyframes active {
+    0%   { opacity: 1 }
+    100% { opacity: 0 }
+}
+
+@-o-keyframes active {
+    0%   { opacity: 1 }
+    100% { opacity: 0 }
+}
+
+@keyframes active {
+    0%   { opacity: 1 }
+    100% { opacity: 0 }
 }
 
 .panel.highlight {
@@ -37,16 +41,48 @@ html,
 }
 
 .panel {
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+
     display: inline-block;
     position: relative;
 
+    // Remove bottom space in inline-block elements
+    vertical-align: top;
+
     &.highlight {
-        -webkit-animation: active-keyframes 0.5s ease-in 1;
-                animation: active-keyframes 0.5s ease-in 1;
+        -webkit-animation: active 0.5s ease-in 1;
+           -moz-animation: active 0.5s ease-in 1;
+                animation: active 0.5s ease-in 1;
     }
 
     &.floating {
         position: absolute;
+    }
+
+    &.wide     { width: 700px; }
+    &.medium   { width: 500px; }
+    &.regular  { width: 400px; }
+    &.thin     { width: 350px; }
+    &.expanded { width: 100%;  }
+}
+
+
+// Colors and custom settings
+.panel {
+    background-color: white;
+    background-image: -webkit-linear-gradient(bottom, whitesmoke 0%, white 100%);
+    background-image: linear-gradient(to top,whitesmoke 0%, white 100%);
+
+    border-right: 1px solid #DDDDDD;
+
+    // font-size must be set
+    font-size: 13px;
+
+    &.floating {
+        background-color: #EEEEEE;
+        background-image: none;
+        border-right: 1px solid #CCCCCC;
     }
 }
