@@ -1,29 +1,29 @@
 # Stacky
-Stacky is a jQuery plugin that gives you the ability to open panels horizontally, as you need them.
+Stacky is a jQuery plugin that gives you the ability to open panels horizontally, as you need them. Panels can be opened and closed, and also expanded and collapsed. A panel can be optionally opened as a floating panel, meaning it is not pushed at the end but next to an specific panel. Additionally, the open and close events can optionally call functions to set or retrieve data to/from panels.
 
 ## Usage
 
-Include the jQuery library, the stacky plugin and its CSS styles:
+Include the jQuery library, the stacky plugin and its CSS styles. These files can be found in the [dist/](dist/) folder.
 ```html
-<script src="js/jquery.js"></script>
-<script src="js/jquery.stacky.js"></script>
-<link rel="stylesheet" type="text/css" href="css/jquery.stacky.css" />
+<script src="path/to/jquery.js"></script>
+<script src="path/to/jquery.stacky.min.js"></script>
+<link rel="stylesheet" type="text/css" href="path/to/jquery.stacky.css" />
 ```
 
-To initialize the plugin, in the ready function:
+Then, initialize the plugin in the element that will hold the panels:
 
 ```javascript
 $( document ).ready(function() {
-    var options = { ... };
-    $( '#container' ).Stacky( options );
+    var default_options = { ... };
+    var container  = $( '#container' ).Stacky( default_options );
 });
 ```
 
-Where `#container` is the element that will hold all the panels. To push in a new panel:
+To push in a new panel use the push method:
 
 ```javascript
-var options = { ... };
-$( '#container' ).data( 'Stacky' ).push( options );
+var panel_options = { ... };
+container.data( 'Stacky' ).push( panel_options );
 ```
 
 #### AMD
@@ -32,12 +32,12 @@ Stacky can also be used with [require.js](http://requirejs.org/). You can find a
 
 ## Options
 
-There are two types of options, depending on where you use them, either in the plugin initialization or when pushing in a new panel.
+Options can be set either in the plugin initialization or when pushing in a new panel.
 
 ### Plugin initialization options
 
 __fadeInSpeed__: Integer | 'fast' | 'slow'  
-The speed (in milliseconds when it's an integer) when making a new panel visible.
+The fade in speed (in milliseconds when it's an integer) when making a new panel visible.
 
 __scrollToSpeed__: Integer | 'fast' | 'slow'  
 The speed (in milliseconds when it's an integer) with which the scroll bar moves when adding, expanding or collapsing panels.
@@ -45,72 +45,22 @@ The speed (in milliseconds when it's an integer) with which the scroll bar moves
 __panelDefaults__: Object  
 An object containing default options to be applied to all new panels. These are the same *Panel pushing options* described in the next subsection.
 
-__texts__: Object  
-An object containing the texts that are used as alternative text in action links of each panel. This object may contain the `string` properties *close*, *expand*, and *collapse*. For example:
-
-```javascript
-texts: {
-    close: 'Close panel',
-    expand: 'Expand panel',
-    collapse: 'Collapse panel'
-}
-```
-
 ### Panel pushing options
 
 __after__: jQuery object    
-If different than undefined, the new panel is inserted after this jQuery element.
-
-__close__: Object    
-Action link to close the panel. It may contain the properties *show* (`boolean`) and *position* ('left' | 'right'). For example:
-
-```javascript
-close: {
-    show: true,
-    position: 'left' // or 'right'
-}
-```
-
-__maximize__: Object    
-Action link to expand and collapse the panel. It may contain the properties *show* (`boolean`) and *position* ('left' | 'right'). For example:
-
-```javascript
-maximize: {
-    show: true,
-    position: 'left' // or 'right'
-}
-```
-
-__navigation__: Object    
-Contains two arrays: left and right, holding the action links for the new panel. The structure is as follows:
-
-```javascript
-navigation: {
-    left: [
-        {
-            link: '#!',
-            alt: 'Open a new panel',
-            linkClass: 'open',
-            iconClass: 'icon-open'
-        },
-        ...
-    ],
-    right: [
-        ... 
-    ]
-}
-```
-
-Note: in the demo folder you can find more examples on how to specify the action links. Examples in the demo are using the [__7 Stroke__](http://themes-pixeden.com/font-demos/7-stroke/) icon font pack.
+If different than undefined, the new panel is inserted after this jQuery element (a panel).
 
 __content__: string    
 HTML to be inserted into the panel.
 
 __floating__: boolean  
-Indicates if the new panel should be placed using absolute position (`true`) or not (`false`).
+Indicates if the new panel should be placed after the 'after' panel [true] or after the other panels (at the end) [false]
 
 __id__: string    
 The id attribute of the new panel.
+
+__class__: string    
+The class attribute of the new panel. The CSS styles include the helper classes thin, regular, medium, and wide to set the panel's width. The expaned class can be configured in the CSS to control the expand behavior (default width is 100%)
 
 __onBeforeOpen__: function ( $panel )
 It's called before fading in the new panel.
@@ -118,17 +68,9 @@ It's called before fading in the new panel.
 __onBeforeClose__: function ( $panel )
 It's called before hiding and removing the panel. To indicate that the panel must remain opened, a false value should be returned.
 
-__size__: '' | 'thin' | 'medium' | 'wide'    
-The size of the new panel. 
-
-__title__: string    
-The panel's title.
-
 ## Theming
 
-In [src/sass](/src/sass) there is a default theme; you can modify the sass variables to vary the visual appeareance of the panels. Note that if you modify the variables you have to run grunt again to compile the css files.
-
-To add more themes, just (i) create a new `.scss` file containing the defined variables, and (ii) change the import statement in [`styles.scss`](src/sass/styles.scss) to point to the new file.
+Stacky panels come with the minimum styling. If you want to customize the appereance you can modify the styles in [src/sass/styles.scss](src/sass/styles.scss), and then re-run the grunt command to generate the distribution files again. With minimum effort you can get panels such as these:
 
 ![White theme](https://cloud.githubusercontent.com/assets/1284036/6249774/6e0854ae-b757-11e4-81a9-7b89d6bdbb9b.png)
 
