@@ -29,10 +29,14 @@ $(document).ready(function(){
         panelDefaults: {
             content: content.html(),
             onBeforeOpen: function($panel){
+                // Useful to set data in the panel's content
+                // For example, setting initial values in a form's inputs
                 console.log('Pushing', $panel);
             },
             onBeforeClose: function($panel){
-                console.log('Removed', $panel);
+                // Useful to retieve data from the panel before closing it
+                // For example, extracting values from a form
+                console.log('Removing', $panel);
             }
         }
     });
@@ -50,6 +54,7 @@ $(document).ready(function(){
         
         var $panel = stackyContainer.data('Stacky').push({
             id: 'panel-' + identifier,
+            class: 'regular',   // width
             floating: isFloating,
             after: isFloating ? afterPanel : undefined
         });

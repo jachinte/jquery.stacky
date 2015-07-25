@@ -52,6 +52,7 @@ define(["jquery", "jquery.stacky"], function($) {
             
             var $panel = stackyContainer.data('Stacky').push({
                 id: 'panel-' + identifier,
+                class: 'regular',   // width
                 floating: isFloating,
                 after: isFloating ? afterPanel : undefined
             });

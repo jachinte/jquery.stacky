@@ -31,6 +31,7 @@
                     content: '',                // HTML to be inserted into the panel
                     floating: false,            // Indicates if the new panel should be placed using absolute position
                     id: '',                     // id attribute of the new panel
+                    class: '',                  // class attribute of the new panel
                     onBeforeOpen: function ($panel) {},   // It's called before fading in the new panel
                     onBeforeClose: function ($panel) {},  // It's called before hiding and removing the panel.
                                                           // If a false value is returned, the panel must remain opened
@@ -113,6 +114,7 @@
         var _createPanelStructure = function (panelSettings) {
                 var panel = $('<section></section>')
                         .addClass(classes.panel)
+                        .addClass(panelSettings.class)
                         .attr('id', panelSettings.id)
                         .append(panelSettings.content);
 
