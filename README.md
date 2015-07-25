@@ -60,13 +60,23 @@ __id__: string
 The id attribute of the new panel.
 
 __class__: string    
-The class attribute of the new panel. The CSS styles include the helper classes thin, regular, medium, and wide to set the panel's width. The expaned class can be configured in the CSS to control the expand behavior (default width is 100%)
+The class attribute of the new panel. The CSS styles include the helper classes `thin`, `regular`, `medium`, and `wide` to set the panel's width. The `expaned` class can be configured in the CSS to control the expand behavior (default width is 100%)
 
-__onBeforeOpen__: function ( $panel )
+__onBeforeOpen__: function ( $panel )    
 It's called before fading in the new panel.
 
-__onBeforeClose__: function ( $panel )
+__onBeforeClose__: function ( $panel )    
 It's called before hiding and removing the panel. To indicate that the panel must remain opened, a false value should be returned.
+
+## Util methods
+
+These are utility functions built-in within the plugin. The usage is similar to the `push` method.
+
+__closeActivePanel__: function (  )    
+Closes the current active panel (or panels holding the `active` class)
+
+__highlightPanel__: function ( $panel )    
+Highlights the given panel. This simply shows a left and right shadow for 1 second.
 
 ## Theming
 
