@@ -1,7 +1,21 @@
 $(document).ready(function(){
     'use strict';
 
-    var sizes = ['thin', 'medium', 'wide'];
+    var sizes = ['thin', 'medium', 'wide'],
+        content = $('<div></div>'),
+        open = $('<a></a>').addClass('open-panel').append($('<i></i>').addClass('fa fa-folder-open-o')),
+        openFloating = $('<a></a>').addClass('open-panel open-floating-panel').append($('<i></i>').addClass('fa fa-folder-open')),
+        close = $('<a></a>').addClass('close').append($('<i></i>').addClass('fa fa-times')),
+        expand = $('<a></a>').addClass('expand').append($('<i></i>').addClass('fa fa-expand')),
+        collapse = $('<a></a>').addClass('collapse').append($('<i></i>').addClass('fa fa-minus')),
+        header = $('<header></header>')
+                    .append(open)
+                    .append(openFloating)
+                    .append(expand)
+                    .append(collapse)
+                    .append(close);
+
+        content.append(header);
 
     // Returns a random integer between min (included) and max (excluded)
     function getRandomInt(min, max) {
@@ -13,28 +27,16 @@ $(document).ready(function(){
         fadeInSpeed: 'fast',
         scrollToSpeed: 600,
         panelDefaults: {
-            content: '',
-            navigation: {
-                left: [
-                    {
-                        link: '#',
-                        alt: 'Open a new panel',
-                        linkClass: 'open-panel',
-                        iconClass: 'fa fa-folder-open-o'
-                    },
-                    {
-                        link: '#',
-                        alt: 'Open a new floating panel',
-                        linkClass: 'open-panel open-floating-panel',
-                        iconClass: 'fa fa-folder-open'
-                    }
-                ]
-            },
+            content: content.html(),
             onBeforeOpen: function($panel){
+                // Useful to set data in the panel's content
+                // For example, setting initial values in a form's inputs
                 console.log('Pushing', $panel);
             },
             onBeforeClose: function($panel){
-                console.log('Removed', $panel);
+                // Useful to retieve data from the panel before closing it
+                // For example, extracting values from a form
+                console.log('Removing', $panel);
             }
         }
     });
@@ -51,10 +53,9 @@ $(document).ready(function(){
         }
         
         var $panel = stackyContainer.data('Stacky').push({
-            title: 'Panel ' + identifier,
             id: 'panel-' + identifier,
+            class: 'regular',   // width
             floating: isFloating,
-            size: sizes[getRandomInt(0, 3)],    // Create panels of random size
             after: isFloating ? afterPanel : undefined
         });
     });
