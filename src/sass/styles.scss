@@ -61,10 +61,10 @@ html,
         position: absolute;
     }
 
-    &.wide     { width: 700px; }
-    &.medium   { width: 500px; }
-    &.regular  { width: 400px; }
     &.thin     { width: 350px; }
+    &.regular  { width: 400px; }
+    &.medium   { width: 500px; }
+    &.wide     { width: 700px; }
     &.expanded { width: 100%;  }
 }
 

@@ -66,17 +66,17 @@ html,
 .panel.floating {
   position: absolute;
 }
-.panel.wide {
-  width: 700px;
-}
-.panel.medium {
-  width: 500px;
+.panel.thin {
+  width: 350px;
 }
 .panel.regular {
   width: 400px;
 }
-.panel.thin {
-  width: 350px;
+.panel.medium {
+  width: 500px;
+}
+.panel.wide {
+  width: 700px;
 }
 .panel.expanded {
   width: 100%;
