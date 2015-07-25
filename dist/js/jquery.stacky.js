@@ -107,11 +107,18 @@
              * Creates the panel structure with the basic content configuration
              */
         var _createPanelStructure = function (panelSettings) {
-                var panel = $('<section></section>')
+                // divs to highlight the panel
+                var leftShadow = $('<div></div>').addClass('shadow-left'),
+                    rightShadow = $('<div></div>').addClass('shadow-right'),
+
+                // The panel structure
+                    panel = $('<section></section>')
                         .addClass(classes.panel)
                         .addClass(panelSettings.class)
                         .attr('id', panelSettings.id)
-                        .append(panelSettings.content);
+                        .append(panelSettings.content)
+                        .append(leftShadow)
+                        .append(rightShadow);
 
                 if(panelSettings.floating === true){
                     panel.addClass(classes.floating);
