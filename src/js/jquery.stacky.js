@@ -26,11 +26,6 @@
                     onBeforeOpen: function ($panel) {},   // It's called before fading in the new panel
                     onBeforeClose: function ($panel) {},  // It's called before hiding and removing the panel.
                                                           // If a false value is returned, the panel must remain opened
-                },
-                texts: {                    // Alternative text for action links
-                    close: 'Close panel',
-                    collapse: 'Collapse panel',
-                    expand: 'Expand panel'
                 }
             },
 
