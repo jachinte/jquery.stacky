@@ -9,10 +9,12 @@ define(["jquery", "jquery.stacky"], function($) {
             openFloating = $('<a></a>').addClass('open-panel open-floating-panel').append($('<i></i>').addClass('fa fa-folder-open')),
             close = $('<a></a>').addClass('close').append($('<i></i>').addClass('fa fa-times')),
             expand = $('<a></a>').addClass('expand').append($('<i></i>').addClass('fa fa-expand')),
+            collapse = $('<a></a>').addClass('collapse').append($('<i></i>').addClass('fa fa-minus')),
             header = $('<header></header>')
                         .append(open)
                         .append(openFloating)
                         .append(expand)
+                        .append(collapse)
                         .append(close);
 
             content.append(header);
