@@ -81,14 +81,25 @@
             $element.addClass(classes.panels);
 
             // Include panels already appended to the panels container
-            plugin.panels.concat($('.' + classes.panel));
+            var existingPanels = $('.' + classes.panel);
+            existingPanels.each(function (i) {
+                var panel = $(this);
+
+                panel.css('z-index', (i + 1) + '');
+                _bindEvents(panel, plugin.settings.onBeforeClose);
+
+                if(i === existingPanels.length - 1){
+                    panel.addClass(classes.active);
+                }
+
+                plugin.panels.push(panel);
+            });
         };
         
         // private methods
 
             /*
              * Creates the panel structure with the basic content configuration
-             * (title, navigation and shadows)
              */
         var _createPanelStructure = function (panelSettings) {
                 var panel = $('<section></section>')
@@ -124,6 +135,32 @@
                 return offset;
             },
 
+            _bindEvents = function (panel, onBeforeClose) {
+                // Hide the collapse element
+                panel
+                    .find('.' + classes.collapse)
+                    .hide();
+
+                // close panel
+                panel.on('click', '.' + classes.close, { 
+                    self: plugin, 
+                    callback: onBeforeClose, 
+                    panel: panel 
+                }, _closePanel);
+
+                // expand panel
+                panel.on('click', '.' + classes.expand, { 
+                    self: plugin, 
+                    panel: panel 
+                }, _expandPanel);
+
+                // collapse panel
+                panel.on('click', '.' + classes.collapse, { 
+                    self: plugin, 
+                    panel: panel 
+                }, _collapsePanel);
+            },
+
             /*
              * Event handler for closing panels
              */
@@ -131,7 +168,7 @@
                 var self = event.data.self,
                     callback = event.data.callback,
                     panel = event.data.panel,
-                    hasShadow = panel.hasClass(classes.active),
+                    isActive = panel.hasClass(classes.active),
                     index = $element.find('.' + classes.panel).index(panel);
 
                 // If there is a callback, execute it!
@@ -158,7 +195,7 @@
                 // Remove the DOM element
                 panel.remove();
 
-                if(hasShadow){
+                if(isActive){
                     $element.find('.' + classes.panel)
                         .last()
                         .addClass(classes.active);
@@ -173,14 +210,12 @@
                     panel = event.data.panel;
 
                 $(this)
-                    .removeClass(classes.expand)
-                    .addClass(classes.collapse)
-                    .attr('title', self.settings.texts.collapse);
+                    .hide();
 
                 $(this)
-                    .find('i')
-                    .removeClass(classes.expandIcon)
-                    .addClass(classes.collapseIcon);
+                    .closest('.' + classes.panel)
+                    .find('.' + classes.collapse)
+                    .show();
 
                 panel.addClass(classes.expanded);
                 $element.animate({scrollLeft: _leftOffset(panel)}, self.settings.scrollToSpeed);
@@ -194,14 +229,12 @@
                     panel = event.data.panel;
 
                 $(this)
-                    .removeClass(classes.collapse)
-                    .addClass(classes.expand)
-                    .attr('title', self.settings.texts.expand);
+                    .hide();
 
                 $(this)
-                    .find('i')
-                    .removeClass(classes.collapseIcon)
-                    .addClass(classes.expandIcon);
+                    .closest('.' + classes.panel)
+                    .find('.' + classes.expand)
+                    .show();
 
                 panel.removeClass(classes.expanded);
                 $element.animate({scrollLeft: _leftOffset(panel)}, self.settings.scrollToSpeed);
@@ -227,19 +260,23 @@
             var panel = _createPanelStructure(panelSettings),
                 zindex = (plugin.panels.length + 1) + '';
 
-            if((typeof panelOptions !== 'undefined') && panelOptions.floating === true){
+            if((typeof panelOptions !== 'undefined') 
+                && panelOptions.floating === true){
                 zindex = '10' + zindex;
             }
 
-            // As this is the latest panel, show left and right shadow
+            // As this is the latest panel, add the active class
             panel.addClass(classes.active);
-            panel.css('display', 'none').css('z-index', '' + zindex);
+            panel
+                .css('display', 'none')
+                .css('z-index', '' + zindex);
 
             /*
-             * Remove shadow in all panels (there is no certainty in which panel has
-             * shadow. It is not always the last one)
+             * Remove the active class in all panels (there is no certainty 
+             * in which panel is active. It is not always the last one)
              */
-            container.find('.' + classes.panel)
+            container
+                .find('.' + classes.panel)
                 .removeClass(classes.active);
 
             /*
@@ -252,7 +289,9 @@
                 panelSettings.after.after(panel);
 
                 // Store new panel in the panels array
-                var previousElemIndex = $element.find('.' + classes.panel).index(panelSettings.after);
+                var previousElemIndex = $element
+                    .find('.' + classes.panel)
+                    .index(panelSettings.after);
                 plugin.panels.splice(previousElemIndex + 1, 0, panel);
 
             }else{
@@ -272,14 +311,7 @@
             }
 
             // Bind click events
-            // close panel
-            panel.on('click', '.' + classes.close, { self: plugin, callback: panelSettings.onBeforeClose, panel: panel }, _closePanel);
-
-            // expand panel
-            panel.on('click', '.' + classes.expand, { self: plugin, panel: panel }, _expandPanel);
-
-            // collapse panel
-            panel.on('click', '.' + classes.collapse, { self: plugin, panel: panel }, _collapsePanel);
+            _bindEvents(panel, panelSettings.onBeforeClose);
 
             // If there is a callback, execute it!
             if(panelSettings.onBeforeOpen
@@ -289,7 +321,7 @@
 
             // Finally, show the recently created panel
             panel.fadeIn(plugin.settings.fadeInSpeed);
-            container.animate({scrollLeft: _leftOffset(panel)}, plugin.settings.scrollToSpeed);
+            container.animate({ scrollLeft: _leftOffset(panel) }, plugin.settings.scrollToSpeed);
 
             // Return the jQuery object
             return panel;
