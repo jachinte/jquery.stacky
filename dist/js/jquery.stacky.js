@@ -138,14 +138,9 @@
             },
 
             _leftOffset = function($panel) {
-                var panelIndex = $element.find('.' + classes.panel).index($panel),
-                    offset = 0;
-
-                for(var i = 0; i < plugin.panels.length && i <= panelIndex; i++){
-                    offset += plugin.panels[i].outerWidth();
-                }
-
-                return offset;
+                return $panel.offset().left + (
+                    $element['scrollLeft']() - $element.offset()['left']
+                );
             },
 
             _bindEvents = function (panel, onBeforeClose) {
