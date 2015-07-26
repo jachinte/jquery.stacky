@@ -5,7 +5,7 @@
  * https://github.com/jachinte/jquery.stacky
  * @projectDescription Stacky is a jQuery plugin that gives you the ability to open panels horizontally, as you need them.
  * @author Miguel Jiménez
- * @version v0.3.3
+ * @version v0.3.4
  */
 ; (function (factory) {
     'use strict';
@@ -256,6 +256,7 @@
 
             /*
              * Generates a random id, in case a panel is not given an id
+             * Source: http://stackoverflow.com/a/6861381/738968
              */
             _randomID = function (length) {
                 var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'.split(''),

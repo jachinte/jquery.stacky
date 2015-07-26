@@ -247,6 +247,7 @@
 
             /*
              * Generates a random id, in case a panel is not given an id
+             * Source: http://stackoverflow.com/a/6861381/738968
              */
             _randomID = function (length) {
                 var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'.split(''),
