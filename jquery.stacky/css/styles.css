@@ -1,0 +1,11 @@
+a {
+	cursor: pointer;
+}
+
+header {
+	text-align: right;
+}
+
+header a i {
+	padding: 6px;
+}
