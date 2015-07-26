@@ -1,3 +1,5 @@
+> Got something to say? let's get in touch: [@jachinte](https://twitter.com/jachinte). Please let me know if you're using Stacky, it's always nice to see what you're using it for!
+
 # jQuery.Stacky
 Stacky is a jQuery plugin that gives you the ability to open panels horizontally, as you need them. 
 
