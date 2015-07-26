@@ -2,7 +2,7 @@
     "name": "jquery.stacky",
     "description": "Stacky is a jQuery plugin that gives you the ability to open panels horizontally, as you need them.",
     "categories": [ "UI", "DOM" ],
-    "version": "0.3.0",
+    "version": "0.3.2",
     "author": {
         "name": "Miguel Jiménez",
         "web": "http://migueljimenez.co"
