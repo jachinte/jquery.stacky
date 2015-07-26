@@ -1,6 +1,26 @@
 # Stacky
 Stacky is a jQuery plugin that gives you the ability to open panels horizontally, as you need them. Panels can be opened and closed, and also expanded and collapsed. A panel can be optionally opened as a floating panel, meaning it is not pushed at the end but next to an specific panel. Additionally, the open and close events can optionally call functions to set or retrieve data to/from panels.
 
+## Installation
+
+The plugin requires jQuery 1.7 or higher.
+
+Via [npm](https://www.npmjs.com/package/jquery.stacky):
+
+```
+npm install jquery.stacky
+```
+
+Via [bower](https://github.com/jachinte/jquery.stacky/blob/master/bower.json)
+
+```
+bower install jquery.stacky
+```
+
+### Downloading Manually
+
+If you want the latest stable version, get the latest release from the [releases](https://github.com/jachinte/jquery.stacky/releases) page.
+
 ## Usage
 
 Include the jQuery library, the stacky plugin and its CSS styles. These files can be found in the [dist/](dist/) folder.
