@@ -1,11 +1,11 @@
 /*!
  * jquery.stacky
- * Copyright (c) 2015 Miguel A. Jiménez - migueljimenezachinte<a>gmail<d>com | http://migueljimenez.co
+ * Copyright (c) 2015 Miguel Jiménez - migueljimenezachinte<a>gmail<d>com | http://migueljimenez.co
  * Licensed under the MIT license.
  * https://github.com/jachinte/jquery.stacky
  * @projectDescription Stacky is a jQuery plugin that gives you the ability to open panels horizontally, as you need them.
- * @author Miguel A. Jiménez
- * @version v0.3.0
+ * @author Miguel Jiménez
+ * @version v0.3.2
  */
 ; (function (factory) {
     'use strict';
@@ -144,9 +144,14 @@
             },
 
             _bindEvents = function (panel, onBeforeClose) {
-                // Hide the collapse element
+                /*
+                 * Hide the collapse/expand element depending
+                 * on the current state of the panel
+                 */
+                var hideClass = panel.hasClass(classes.expanded) ?
+                                    classes.expand : classes.collapse;
                 panel
-                    .find('.' + classes.collapse)
+                    .find('.' + hideClass)
                     .hide();
 
                 // close panel

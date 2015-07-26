@@ -135,9 +135,14 @@
             },
 
             _bindEvents = function (panel, onBeforeClose) {
-                // Hide the collapse element
+                /*
+                 * Hide the collapse/expand element depending
+                 * on the current state of the panel
+                 */
+                var hideClass = panel.hasClass(classes.expanded) ?
+                                    classes.expand : classes.collapse;
                 panel
-                    .find('.' + classes.collapse)
+                    .find('.' + hideClass)
                     .hide();
 
                 // close panel
