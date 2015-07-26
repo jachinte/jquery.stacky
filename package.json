@@ -1,6 +1,6 @@
 {
   "name": "jquery.stacky",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Stacky is a jQuery plugin that gives you the ability to open panels horizontally, as you need them.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,7 +16,12 @@
   },
   "license": "MIT",
   "keywords": [
-    "browser", "animated", "animation", "jquery", "stacking", "panel"
+    "browser",
+    "animated",
+    "animation",
+    "jquery",
+    "stacking",
+    "panel"
   ],
   "bugs": {
     "url": "https://github.com/jachinte/jquery.stacky/issues/"
