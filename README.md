@@ -1,29 +1,23 @@
-# Stacky
-Stacky is a jQuery plugin that gives you the ability to open panels horizontally, as you need them. Panels can be opened and closed, and also expanded and collapsed. A panel can be opened either next to a given panel or a the end, in regular mode (pushed next to a panel) or in floating mode (absolute position). Additionally, the open and close events can optionally call functions to, for instance, set or retrieve data to/from panels.
+# jQuery.Stacky
+Stacky is a jQuery plugin that gives you the ability to open panels horizontally, as you need them. 
+
+Panels can be opened and closed, and also expanded and collapsed. A panel can be opened either next to a given panel or a the end, in regular mode (pushed next to a panel) or in floating mode (absolute position). Additionally, the open and close events can optionally call functions to, for instance, set or retrieve data to/from panels.
 
 With this plugin you can easily achieve user interfaces like this:
 
 ![Example of usage](http://g.recordit.co/70FTWtUheK.gif)
 
-## Installation
+## Install
 
-The plugin requires jQuery 1.7 or higher.
-
-Via [npm](https://www.npmjs.com/package/jquery.stacky):
+The plugin requires jQuery 1.7 or higher. Install via [npm](https://www.npmjs.com/package/jquery.stacky), [bower](https://github.com/jachinte/jquery.stacky/blob/master/bower.json) or [download as a zip](https://github.com/jachinte/jquery.stacky/archive/master.zip):
 
 ```
 npm install jquery.stacky
 ```
 
-Via [bower](https://github.com/jachinte/jquery.stacky/blob/master/bower.json)
-
 ```
 bower install jquery.stacky
 ```
-
-### Downloading Manually
-
-If you want the latest stable version, get the latest release from the [releases](https://github.com/jachinte/jquery.stacky/releases) page.
 
 ## Usage
 
@@ -50,7 +44,7 @@ var panel_options = { ... };
 container.data( 'Stacky' ).push( panel_options );
 ```
 
-#### AMD
+## AMD
 
 Stacky can also be used with [require.js](http://requirejs.org/). You can find an example in [demo/basic-requirejs.html](demo/basic-requirejs.html).
 
@@ -58,7 +52,8 @@ Stacky can also be used with [require.js](http://requirejs.org/). You can find a
 
 Options can be set either in the plugin initialization or when pushing in a new panel.
 
-### Plugin initialization options
+#### Plugin initialization options
+---
 
 __fadeInSpeed__: Integer | 'fast' | 'slow'  
 The fade in speed (in milliseconds when it's an integer) when making a new panel visible.
@@ -69,7 +64,8 @@ The speed (in milliseconds when it's an integer) with which the scroll bar moves
 __panelDefaults__: Object  
 An object containing default options to be applied to all new panels. These are the same *Panel pushing options* described in the next subsection.
 
-### Panel pushing options
+#### Panel pushing options
+---
 
 __after__: jQuery object    
 If different than undefined, the new panel is inserted after this jQuery element (a panel).
