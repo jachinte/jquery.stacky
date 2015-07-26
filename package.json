@@ -10,10 +10,14 @@
     "url": "https://github.com/jachinte/jquery.stacky"
   },
   "author": {
-    "name": "Miguel A. Jiménez",
+    "name": "Miguel Jiménez",
     "web": "http://migueljimenez.co",
     "email": "migueljimenezachinte<a>gmail<d>com"
   },
+  "license": "MIT",
+  "keywords": [
+    "browser", "animated", "animation", "jquery", "stacking", "panel"
+  ],
   "bugs": {
     "url": "https://github.com/jachinte/jquery.stacky/issues/"
   },
