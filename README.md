@@ -96,11 +96,14 @@ It's called before hiding and removing the panel. To indicate that the panel mus
 
 These are utility functions built-in within the plugin. The usage is similar to the `push` method.
 
-__closeActivePanel__: function (  )    
+__closeActive__: function (  )    
 Closes the current active panel (or panels holding the `active` class)
 
-__highlightPanel__: function ( $panel )    
-Highlights the given panel. This simply shows a left and right shadow for 1 second.
+__highlight__: function ( $panel )    
+Moves the scroll bar to show the given panel, and then highlights it. This simply shows a left and right shadow for 1 second.
+
+__goTo__: function ( $panel, callback )    
+Moves the scroll bar to show the given panel, and then executes the callback, if given.
 
 ## Theming
 

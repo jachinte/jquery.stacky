@@ -5,7 +5,7 @@
  * https://github.com/jachinte/jquery.stacky
  * @projectDescription Stacky is a jQuery plugin that gives you the ability to open panels horizontally, as you need them.
  * @author Miguel Jiménez
- * @version v0.3.5
+ * @version v0.3.6
  */
 ; (function (factory) {
     'use strict';
@@ -232,7 +232,7 @@
                     .show();
 
                 panel.addClass(classes.expanded);
-                $element.animate({scrollLeft: _leftOffset(panel)}, self.settings.scrollToSpeed);
+                plugin.goTo(panel);
             },
 
             /*
@@ -251,7 +251,7 @@
                     .show();
 
                 panel.removeClass(classes.expanded);
-                $element.animate({scrollLeft: _leftOffset(panel)}, self.settings.scrollToSpeed);
+                plugin.goTo(panel);
             },
 
             /*
@@ -360,18 +360,23 @@
             return panel;
         };
 
-        plugin.closeActivePanel = function() {
+        plugin.closeActive = function() {
             var activePanel = $element.find('.' + classes.active);
             activePanel.find(classes.close).trigger('click');
         };
 
-        plugin.highlightPanel = function($panel) {
-            $panel.addClass(classes.highlight);
-            $element.animate({scrollLeft: _leftOffset($panel)}, plugin.settings.scrollToSpeed);
+        plugin.highlight = function($panel) {
+            plugin.goTo($panel, function() {
+                $panel.addClass(classes.highlight);
 
-            setTimeout(function(){
-                $panel.removeClass(classes.highlight);
-            }, 600);
+                setTimeout(function(){
+                    $panel.removeClass(classes.highlight);
+                }, 600);
+            });
+        };
+
+        plugin.goTo = function($panel, callback) {
+            $element.animate({scrollLeft: _leftOffset($panel)}, plugin.settings.scrollToSpeed, callback);
         };
 
         // call the "constructor" method
