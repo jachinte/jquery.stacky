@@ -19,6 +19,15 @@ npm install jquery.stacky
 bower install jquery.stacky
 ```
 
+## Demo
+
+Live demonstration:
+
+- [Basic configuration](http://jachinte.github.io/jquery.stacky/basic.html)
+- [Using require.js](http://jachinte.github.io/jquery.stacky/basic-requirejs.html)
+
+You can find the demo files in [here](demo/).
+
 ## Usage
 
 Include the jQuery library, the stacky plugin and its CSS styles. These files can be found in the [dist/](dist/) folder.
