@@ -4,9 +4,9 @@
 [![npm version](https://badge.fury.io/js/jquery.stacky.svg)](http://badge.fury.io/js/jquery.stacky)
 [![Bower version](https://badge.fury.io/bo/jquery.stacky.svg)](http://badge.fury.io/bo/jquery.stacky)
 
-Stacky is a jQuery plugin that gives you the ability to open panels horizontally, as you need them. 
+Stacky makes it  easy to create UIs with panels that open horizontally using jQuery.
 
-Panels can be opened and closed, and also expanded and collapsed. A panel can be opened either next to a given panel or a the end, in regular mode (pushed next to a panel) or in floating mode (absolute position). Additionally, the open and close events can optionally call functions to, for instance, set or retrieve data to/from panels.
+Panels can be opened, closed, expanded and collapsed. A panel can be opened either next to a given panel or a the end, in regular mode (pushed next to a panel) or in floating mode (absolute position). Additionally, the open and close events can optionally call functions to, for instance, set or retrieve data to/from panels.
 
 With this plugin you can easily achieve user interfaces like this:
 
