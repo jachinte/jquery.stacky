@@ -117,7 +117,7 @@ Moves the scroll bar to show the given panel, and then executes the callback, if
 
 ## Theming
 
-Stacky panels come with the minimum styling. If you want to customize the appereance you can modify the styles in [src/sass/styles.scss](src/sass/styles.scss), and then re-run the grunt command to generate the distribution files again.
+Stacky panels come with the minimum styling. If you want to customize the appearance you can modify the styles in [src/sass/styles.scss](src/sass/styles.scss), and then re-run the grunt command to generate the distribution files again.
 
 With Stacky, and some CSS effort, you can easily develop UIs like this:
 
