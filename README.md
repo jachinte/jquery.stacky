@@ -2,8 +2,6 @@
   <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/YTgqkzC8gPbnecNXzgofDQFC/jachinte/jquery.stacky.svg' />
 </a>
 
-> Got something to say? let's get in touch: [@jachinte](https://twitter.com/jachinte). Please let me know if you're using Stacky, it's always nice to see what you're using it for!
-
 # jQuery.Stacky
 [![npm version](https://badge.fury.io/js/jquery.stacky.svg)](http://badge.fury.io/js/jquery.stacky)
 [![Bower version](https://badge.fury.io/bo/jquery.stacky.svg)](http://badge.fury.io/bo/jquery.stacky)
@@ -130,3 +128,5 @@ With Stacky, and some CSS effort, you can easily develop UIs like this:
 ## Contributing
 
 You are invited to contribute code and suggestions to this project. The more the merrier.
+
+> Got something to say? let's get in touch: [@jachinte](https://twitter.com/jachinte). Please let me know if you're using Stacky, it's always nice to see what you're using it for!
