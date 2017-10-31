@@ -1,3 +1,7 @@
+<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/YTgqkzC8gPbnecNXzgofDQFC/jachinte/jquery.stacky'>
+  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/YTgqkzC8gPbnecNXzgofDQFC/jachinte/jquery.stacky.svg' />
+</a>
+
 > Got something to say? let's get in touch: [@jachinte](https://twitter.com/jachinte). Please let me know if you're using Stacky, it's always nice to see what you're using it for!
 
 # jQuery.Stacky
