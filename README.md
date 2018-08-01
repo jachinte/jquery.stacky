@@ -1,7 +1,3 @@
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/YTgqkzC8gPbnecNXzgofDQFC/jachinte/jquery.stacky'>
-  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/YTgqkzC8gPbnecNXzgofDQFC/jachinte/jquery.stacky.svg' />
-</a>
-
 # jQuery.Stacky
 [![npm version](https://badge.fury.io/js/jquery.stacky.svg)](http://badge.fury.io/js/jquery.stacky)
 [![Bower version](https://badge.fury.io/bo/jquery.stacky.svg)](http://badge.fury.io/bo/jquery.stacky)
